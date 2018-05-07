@@ -1,0 +1,28 @@
+{
+  "name": "event-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dokinqs/event-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dokinqs/event-project/issues"
+  },
+  "homepage": "https://github.com/dokinqs/event-project#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "node-fetch": "^2.1.2",
+    "nodemon": "^1.17.4",
+    "pg-promise": "^8.4.3"
+  }
+}
