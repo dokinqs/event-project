@@ -4,8 +4,21 @@ const respController = require('../controllers/responseController');
 
 eventRouter.route('/')
   .get(
-    eventController.getAll, 
-    respController.sendOkResp, 
-    respController.sendErrResp);
+    eventController.getAll,
+    respController.sendOkResp,
+    respController.sendErrResp)
+
+//creat an event
+    .post(
+      eventController.create,
+      respController.sendOkResp,
+      respController.sendErrResp);
+
+//get one event id
+    eventRouter.route('/:id')
+      .get(
+        eventController.getOne,
+        respController.sendOkResp,
+        respController.sendErrResp);
 
 module.exports = eventRouter;

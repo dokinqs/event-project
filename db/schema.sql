@@ -9,11 +9,18 @@ CREATE TABLE events (
   id SERIAL PRIMARY KEY,
   event VARCHAR(255),
   text TEXT NOT NULL,
-  img_url TEXT
+  img_url TEXT,
+  user_id INTEGER REFERENCES user (id) DROP CASCADE
 );
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(255),
-  event_id INTEGER REFERENCES events (id) DROP CASCADE
+  email VARCHAR(255) UNIQUE NOT NULL,
+  pw_digest VARCHAR(255)
+);
+
+CREATE TABLE likes (
+  events_id INTEGER REFERENCES events (id) DROP CASCADE
+  user_id INTEGER REFERENCES user (id) DROP CASCADE
 );
