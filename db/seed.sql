@@ -2,5 +2,10 @@
 
 DELETE FROM events;
 
-INSERT INTO events (event, text, img_url)
-VALUES ('blah', 'blahblah')
+INSERT INTO events (event, text)
+VALUES 
+('blah', 'blahblah'),
+('concert', 'summer 2018');
+
+-- INSERT INTO users (username, event_id)
+-- VALUES ('')
