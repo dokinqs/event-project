@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 // const authController = require('./controller/authController');
-const apiRouter = require('./routes/apiRouter');
+const eventRouter = require('./routes/eventRouter');
 
 const app = express();
 
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-app.use('/api', apiRouter);
+app.use('/event', eventRouter);
 app.get('/hello', (req, res) => {
   res.json({'msg': 'hey'})
 });

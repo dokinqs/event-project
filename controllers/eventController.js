@@ -1,9 +1,9 @@
-const Api = require('../models/api');
+const Event = require('../models/event');
 
 function getAll(req, res, next) {
-  Api.getAll()
+  Event.getAll()
     .then(data => {
-      res.locals.apis = data;
+      res.locals.events = data;
       next();
     }).catch(next);
 }
