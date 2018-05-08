@@ -6,6 +6,14 @@ function getAll() {
     `);
 }
 
+function getOne(id) {
+  return db.one(`
+    SELECT * FROM events
+    WHERE id = $1
+    `, id);
+}
+
 module.exports = {
-  getAll
+  getAll,
+  getOne
 }

@@ -8,6 +8,15 @@ function getAll(req, res, next) {
     }).catch(next);
 }
 
+function getOne(req, res, next) {
+  Event.getOne(req.params.id)
+  .then(data => {
+    res.locals.events = data;
+    next();
+  }).catch(next);
+}
+
 module.exports = {
-  getAll
+  getAll,
+  getOne
 }
