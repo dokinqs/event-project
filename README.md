@@ -21,12 +21,11 @@ Initial Start
 
 ## Technologies
 - Express
-- PSQL
+- PostGresSQL
 - Models & Views
 - CRUD
 - REACT
 - Meetup.com API
-- Google (places) API 
 
 ## MVP
 - API
@@ -37,6 +36,7 @@ Initial Start
 - Styling
 - Search bar
 - Comments
+- Google (Places or Maps) API 
 
 ## Workflow
 - setup - all together
