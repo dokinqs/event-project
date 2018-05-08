@@ -6,7 +6,6 @@ technologies that the user likes. The user can like, edit, delete and create eve
 We will be using the meetup.com api to show additional results than the ones created by our
 users.
 
-
 ## User Story
 Initial Start
 - User will be on the landing page of the Events Meetup. Popular events and events going on near the user will be page. 
@@ -45,7 +44,6 @@ Initial Start
 - One pair will be doing Front-end the second pair will be doing Back-end 
 - Style guide: airBnb
 
-
 ## Wireframe
 <img src="wireframe.jpg" />
 
@@ -59,4 +57,5 @@ Initial Start
 | API | H | 10hrs| N/A | N/A |
 | Styling | L | 5hrs| N/A | N/A |
 | Auth | H | 10hrs| N/A | N/A |
-| Total |  | 73hrs | N/A | N/A |
+| Setup Server | H | 2hrs| 1.5hrs | 1.5hrs |
+| Total |  | 75hrs | N/A | N/A |
