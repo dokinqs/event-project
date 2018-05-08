@@ -32,9 +32,10 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.events)
     return (
       <div className="App">
-        <Route exact path="/event" component={Events} />
+        <Events events={this.state.events} />
       </div>
     );
   }

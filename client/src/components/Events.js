@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
-export default (props) => {
-  return (
-    <div>
-    <h2>Welcome Home!</h2>
+class Events extends Component {
 
-    {this.props.event.map(event => (
-          <div key={event.id}>
-            <p>{event.text}
-          </div>
-        ))}
-  </div>
-  )
+  render() {
+    console.log(this.props.events);
+    return (
+      <div>
+      <h2>Welcome Home!</h2>
+      {this.props.events.map(event => (
+            <div key={event.id}>
+              <p>{event.text}</p>
+              <p>{event.id}</p>
+              <p>{event.event}</p>
+            </div>
+          ))}
+    </div>
+    )
+  }
 }
 
+export default Events;
