@@ -7,9 +7,9 @@ class Events extends Component {
     console.log(this.props.events);
     return (
       <div>
-      <h2>Welcome Home!</h2>
+      <h2>This Is Events!</h2>
       {this.props.events.map(event => (
-            <div key={event.id}>
+            <div key={event.id} className='event-list'>
               <p>{event.text}</p>
               <p>{event.id}</p>
               <p>{event.event}</p>

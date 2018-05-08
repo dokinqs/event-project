@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Events from './components/Events';
+import Navbar from './components/Header';
+import Home from './components/Home'
+import Footer from './components/Footer'
 
 
 class App extends Component {
@@ -12,6 +15,7 @@ class App extends Component {
     this.state = {
       events: []
     }
+
   }
 
   fetchEvents() {
@@ -35,7 +39,19 @@ class App extends Component {
     console.log(this.state.events)
     return (
       <div className="App">
-        <Events events={this.state.events} />
+        <Navbar/>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/events' component={(props) => (
+              <Events
+                {...props}
+                events={this.state.events}
+              />
+          )} />
+
+        </Switch>
+        <Footer/>
+
       </div>
     );
   }
