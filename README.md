@@ -1,8 +1,15 @@
-# event-project
+# H@ckUp
+
+## Summary
+Create a meetup inspired application for people in the tech community to meet, based on the 
+technologies that the user likes. The user can like, edit, delete and create events.
+We will be using the meetup.com api to show additional results than the ones created by our
+users.
+
 
 ## User Story
 Initial Start
--   User will be on the landing page of the Events Meetup. Popular events and events going on near the user will be page. 
+- User will be on the landing page of the Events Meetup. Popular events and events going on near the user will be page. 
 
 - A login and register will be to the top right corner. If they have not registered they will click on the register link and be guided to a register form. If otherwise they will be guided to a login form. 
 
@@ -13,12 +20,14 @@ Initial Start
 - UPDATE and event they will possibly be going to or an event they created
 - DELETE an event from there favorites list along with interests. 
 
-## Features
+## Technologies
 - Express
 - PSQL
 - Models & Views
 - CRUD
 - REACT
+- Meetup.com API
+- Google (places) API 
 
 ## MVP
 - API
@@ -27,20 +36,27 @@ Initial Start
 
 ## Post MVP
 - Styling
+- Search bar
+- Comments
 
 ## Workflow
 - setup - all together
-- pst setpup - pair programming, differrent pairs everyday and driver navigator switch every 20mins.
+- pst setup - pair programming, different pairs everyday, and driver navigator switch every 20mins.
+- One pair will be doing Front-end the second pair will be doing Back-end 
+- Style guide: airBnb
 
 
 ## Wireframe
 <img src="wireframe.jpg" />
 
+## ERD
+<img src="ERD_wireframe.jpg"/>
+
 ## Time Management
-| Component | Priority | Estimated Time | Time Invetsted | Actual Time |
+| Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | CRUD(Express) | H | 48hrs | N/A | N/A |
-| API | H | N/A| 10hrs | N/A |
+| API | H | 10hrs| N/A | N/A |
 | Styling | L | 5hrs| N/A | N/A |
 | Auth | H | 10hrs| N/A | N/A |
 | Total |  | 73hrs | N/A | N/A |
