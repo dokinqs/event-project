@@ -11,6 +11,7 @@ CREATE TABLE events (
   text TEXT NOT NULL,
   img_url TEXT,
   user_id INTEGER REFERENCES user (id) DROP CASCADE
+
 );
 
 CREATE TABLE users (

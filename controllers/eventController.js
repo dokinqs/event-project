@@ -8,6 +8,7 @@ function getAll(req, res, next) {
     }).catch(next);
 }
 
+// take the data and assign it to data variable
 function getOne(req, res, next) {
   Event.getOne(req.params.id)
   .then(data => {
@@ -15,6 +16,7 @@ function getOne(req, res, next) {
     next();
   }).catch(next);
 }
+
 
 function create(req, res, next) {
   Event.create(req.body)
