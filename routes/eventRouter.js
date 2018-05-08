@@ -6,7 +6,13 @@ eventRouter.route('/')
   .get(
     eventController.getAll,
     respController.sendOkResp,
-    respController.sendErrResp);
+    respController.sendErrResp)
+
+//creat an event
+    .post(
+      eventController.create,
+      respController.sendOkResp,
+      respController.sendErrResp);
 
 //get one event id
     eventRouter.route('/:id')

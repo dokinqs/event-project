@@ -16,7 +16,16 @@ function getOne(req, res, next) {
   }).catch(next);
 }
 
+function create(req, res, next) {
+  Event.create(req.body)
+  .then(data => {
+    res.locals.events = data;
+    next();
+  }).catch(next);
+}
+
 module.exports = {
   getAll,
-  getOne
+  getOne,
+  create
 }
