@@ -10,13 +10,16 @@ const PORT = process.env.PORT || 3001;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-// app.use(authController.recieveToken);
+// app.use(authController.receiveToken);
 
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
 app.use('/api', apiRouter);
+app.get('/hello', (req, res) => {
+  res.json({'msg': 'hey'})
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
