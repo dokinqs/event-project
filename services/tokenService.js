@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.TOKEN_SECRET || 'supersecuresecret';
 
 function makeToken(payload) {
+  console.log('HIIII')
   return new Promise((resolve, reject) => {
     jwt.sign(
       payload,

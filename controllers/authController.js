@@ -26,15 +26,16 @@ function register(req, res) {
     .catch(err => res.status(401).json({
       message: 'Username taken'
     }))
-    // .then(data => tokenService.makeToken({
-    //   email: data.email,
-    //   id: data.id
-    // }))
-    // .then(token => {
-    //   res.json({
-    //     token
-    //   })
-    // });
+    .then(data => tokenService.makeToken({
+      username: data.username,
+      email: data.email,
+      id: data.id
+    }))
+    .then(token => {
+      res.json({
+        token
+      })
+    });
 }
 
 module.exports = {
