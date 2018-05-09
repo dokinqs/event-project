@@ -11,6 +11,7 @@ function Event({ event }) {
 	  )
 	// }
 }
+//display a single event
 
 export default Event;
 // <li className='eventLi'>

@@ -9,11 +9,13 @@ class Events extends Component {
       <div>
       <h2>This Is Events!</h2>
       {this.props.events.map(event => (
-        <div key={event.id} className='event-list'>
-          <Link to ={`events/${event.id}`}>{event.id}</Link>
+        <Link to ={`events/${event.id}`}><div key={event.id} className='event-list'>
+          {event.id}
           <p>{event.event}</p>
           <p>{event.text}</p>
         </div>
+        </Link>
+        //make the whole section of each event clickable
       ))}
     </div>
     )

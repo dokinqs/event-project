@@ -31,10 +31,6 @@ class App extends Component {
       })).catch(err => console.log(`error: ${err}`))
   }
 
-  componentDidMount() {
-    this.fetchEvents();
-  }
-
   findEvent(id) {
     console.log(id)
     console.log(this.state.events[0].id)
@@ -43,6 +39,9 @@ class App extends Component {
     return event[0]
   }
 
+  componentDidMount() {
+    this.fetchEvents();
+  }
 
   render() {
     console.log(this.state.events)
