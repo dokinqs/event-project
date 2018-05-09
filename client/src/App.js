@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   fetchEvents() {
-    fetch('api/event')
+    fetch('/api/events')
       .then(resp => {
         if (!resp.ok) {
           throw Error('oops: ', resp.message);
