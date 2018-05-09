@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import Events from './components/Events';
 import Navbar from './components/Header';
-import Home from './components/Home'
-import Footer from './components/Footer'
-
+import Home from './components/Home';
+import Footer from './components/Footer';
+import Event from './components/Event';
+// import EditEvent from './components/EditEvent';
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       events: []
     }
-
+    this.findEvent = this.findEvent.bind(this);
   }
 
   fetchEvents() {
@@ -35,22 +35,34 @@ class App extends Component {
     this.fetchEvents();
   }
 
+  findEvent(id) {
+    console.log(`This is the tweet to edit: ${id}`);
+  }
+
   render() {
     console.log(this.state.events)
     return (
       <div className="App">
-        <Navbar/>
+        <Navbar />
         <Switch>
-          <Route exact path='/' component={Home}/>
+          <Route path={`/events/:id`} component={Event}
+          // {(props) => (
+              // {...props}
+              // event={this.findEvent(props.match.params.id)}
+              // onSubmit={this.updateEven t.bind(this)}
+            // />
+          // )}
+        />
           <Route exact path='/events' component={(props) => (
               <Events
                 {...props}
                 events={this.state.events}
               />
           )} />
+        <Route path='/' component={Home}/>
 
         </Switch>
-        <Footer/>
+        <Footer />
 
       </div>
     );
