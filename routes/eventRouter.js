@@ -19,6 +19,16 @@ eventRouter.route('/:id')
   .get(
     eventController.getOne,
     respController.sendOkResp,
+    respController.sendErrResp)
+
+  .delete(
+    eventController.destroy,
+    respController.sendOkResp,
+    respController.sendErrResp)
+
+  .put(
+    eventController.update,
+    respController.sendOkResp,
     respController.sendErrResp);
 
 module.exports = eventRouter;

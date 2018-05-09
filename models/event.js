@@ -14,20 +14,38 @@ function getOne(id) {
 }
 
 //create event
-function create(event) {
-  //the if statement if for users who logged in
+function create(events) {
+  //the if statement is for users who logged in
   //if the users are not logged in they cannot create
+
   // if (!event.event_id) event.event_id = null;
 
   return db.one(`
-    INSERT INTO events (event, text, img_url, user_id)
-    VALUES ($/event/, $/text/, $/img_url/, $/user_id/)
+    INSERT INTO events (event, text, img_url)
+    VALUES ($/event/, $/text/, $/img_url/)
     RETURNING *
-    `, event);
+    `, events);
+}
+
+function destroy(id) {
+  return db.none(`
+    DELETE FROM events WHERE id = $1
+    `, id);
+}
+
+function update(events) {
+    return db.one(`
+    UPDATE events
+    SET event = $/event/, text = $/text/, img_url = $/img_url/
+    WHERE id = $/id/
+    RETURNING *
+    `, events);
 }
 
 module.exports = {
   getAll,
   getOne,
-  create
+  create,
+  destroy,
+  update
 }
