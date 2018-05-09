@@ -6,7 +6,7 @@ import Navbar from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Event from './components/Event';
-// import EditEvent from './components/EditEvent';
+import EditEvent from './components/EditEvent';
 
 class App extends Component {
   constructor(props) {
@@ -36,8 +36,13 @@ class App extends Component {
   }
 
   findEvent(id) {
-    console.log(`This is the tweet to edit: ${id}`);
+    console.log(id)
+    console.log(this.state.events[0].id)
+    const event = (this.state.events).filter(t => (t.id === parseInt(id, 10)));
+    console.log(event)
+    return event[0]
   }
+
 
   render() {
     console.log(this.state.events)
@@ -45,13 +50,13 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path={`/events/:id`} component={Event}
-          // {(props) => (
-              // {...props}
-              // event={this.findEvent(props.match.params.id)}
+          <Route path={`/events/:id`} component={(props) => (
+            <EditEvent
+              {...props}
+              event={this.findEvent(props.match.params.id)}
               // onSubmit={this.updateEven t.bind(this)}
-            // />
-          // )}
+            />
+          )}
         />
           <Route exact path='/events' component={(props) => (
               <Events
