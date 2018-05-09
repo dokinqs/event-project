@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   fetchEvents() {
-    fetch('/event')
+    fetch('api/event')
       .then(resp => {
         if (!resp.ok) {
           throw Error('oops: ', resp.message);
@@ -49,7 +49,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path={`/events/:id`} component={(props) => (
+          <Route path={`/api/events/:id`} component={(props) => (
             <EditEvent
               {...props}
               event={this.findEvent(props.match.params.id)}
@@ -57,7 +57,7 @@ class App extends Component {
             />
           )}
         />
-          <Route exact path='/events' component={(props) => (
+          <Route exact path='/api/events' component={(props) => (
               <Events
                 {...props}
                 events={this.state.events}

@@ -11,7 +11,7 @@ class Navbar extends Component {
           <Link to='/'>
             <li className="nav-li">Home</li>
           </Link>
-          <Link to='/events'>
+          <Link to='api/events'>
             <li className="nav-li">Events</li>
           </Link>
         </ul>
