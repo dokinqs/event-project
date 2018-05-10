@@ -9,12 +9,11 @@ import Footer from './components/Footer';
 import EditEvent from './components/EditEvent';
 import Event from './components/Event';
 import LoginForm from './components/LoginForm';
-<<<<<<< HEAD
+
 import CreateEvent from './components/CreateEvent';
 import EventForm from './components/EventForm';
-=======
+
 import RegisterForm from './components/RegisterForm';
->>>>>>> f1acc484befc89b7f2746c8138be6fd62fbdd6d9
 
 class App extends Component {
   constructor(props) {
@@ -132,9 +131,8 @@ class App extends Component {
         console.log('logged in with creds!', creds);
       })
   }
-<<<<<<< HEAD
-=======
-  
+
+
   registerRequest(creds) {
     console.log('trying to register with creds', creds);
     fetch('/api/auth/register', {
@@ -157,7 +155,6 @@ class App extends Component {
         console.log('registered with creds!', creds);
       })
   }
->>>>>>> f1acc484befc89b7f2746c8138be6fd62fbdd6d9
 
   handleLogin(creds) {
     this.loginRequest(creds);
@@ -217,13 +214,13 @@ class App extends Component {
                 events={this.state.events}
               />
           )} />
-          <Route exact path='/api/auth/login' component={(props) => ( 
+          <Route exact path='/api/auth/login' component={(props) => (
             <LoginForm
               {...props}
                 handleLogin={this.handleLogin}
             />
           )} />
-          <Route exact path='/api/auth/register' component={(props) => ( 
+          <Route exact path='/api/auth/register' component={(props) => (
             <RegisterForm
               {...props}
                 handleRegister={this.handleRegister}
