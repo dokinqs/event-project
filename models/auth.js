@@ -18,5 +18,35 @@ function register(cred) {
       `, newUser)
     });
 }
+<<<<<<< HEAD
 //
 module.exports = {register};
+=======
+
+function findByEmail(email) {
+  return db.one(`
+    SELECT * FROM users
+    WHERE email = $1
+    `, email);
+}
+
+function login(cred) {
+  return findByEmail(cred.email)
+    .then(user => (
+      // compare provided pw_digest(password) with pw_digest
+      bcrypt.compare(cred.pw_digest, user.pw_digest)
+      // match is a boolean if hashing the provided password
+      // matches the hash password (True or False)
+        .then(match => {
+          if(!match) throw new Error('Credentials do not match');
+          delete user.pw_digest;
+          return user;
+        })
+      ))
+}
+
+module.exports = {
+  register,
+  login
+};
+>>>>>>> 748b47935c423ee0e06d4edc485fab95ade251a3

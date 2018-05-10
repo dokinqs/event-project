@@ -53,7 +53,7 @@ Initial Start
 ## Time Management
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| CRUD(Express) | H | 48hrs | N/A | N/A |
+| CRUD(Express/REACT) | H | 48hrs | N/A | Express(4hrs) |
 | API | H | 10hrs| N/A | N/A |
 | Styling | L | 5hrs| N/A | N/A |
 | Auth | H | 10hrs| N/A | N/A |
