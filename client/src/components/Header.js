@@ -17,6 +17,9 @@ class Navbar extends Component {
           <Link to='/api/auth/login'>
             <li className="nav-li">Login</li>
           </Link>
+          <Link to='/api/auth/register'>
+            <li className="nav-li">Register</li>
+          </Link>
         </ul>
       </div>
     )

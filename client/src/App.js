@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import EditEvent from './components/EditEvent';
 import Event from './components/Event';
 import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class App extends Component {
     }
     this.findEvent = this.findEvent.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
   }
 
   fetchEvents() {
@@ -105,11 +107,39 @@ class App extends Component {
         this.setState({
           currentUser: jwt.decodeToken(respBody.token).payload
         })
+        console.log('logged in with creds!', creds);
       })
   }
   
+  registerRequest(creds) {
+    console.log('trying to register with creds', creds);
+    fetch('/api/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(creds),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(resp => {
+        if (!resp.ok) throw new Error(resp.statusMessage);
+        return resp.json();
+      })
+      .then(respBody => {
+        console.log(respBody);
+        localStorage.setItem('authToken', respBody.token);
+        this.setState({
+          currentUser: jwt.decodeToken(respBody.token).payload
+        })
+        console.log('registered with creds!', creds);
+      })
+  }
+
   handleLogin(creds) {
     this.loginRequest(creds);
+  }
+
+  handleRegister(creds) {
+    this.registerRequest(creds);
   }
 
   // handleSubmit(quote) {
@@ -160,6 +190,12 @@ class App extends Component {
             <LoginForm
               {...props}
                 handleLogin={this.handleLogin}
+            />
+          )} />
+          <Route exact path='/api/auth/register' component={(props) => ( 
+            <RegisterForm
+              {...props}
+                handleRegister={this.handleRegister}
             />
           )} />
         <Route path='/' component={Home}/>
