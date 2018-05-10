@@ -19,23 +19,25 @@ export default class EditEvent extends Component {
         [name]: value
       }
     }))
-
-    console.log("name: ", name, "event: ", value)
+    // console.log(name, "with value: ", value) checking if state changes.
   }
   handleSubmit(e) {
     e.preventDefault();
     this.props.onSubmit(this.state.event);
-    // window.location.reload();
+    window.location.reload();
   }
 
   render() {
+    console.log(this.state.event)
     const { event, text, id, img_url} = this.state.event
     return (
       <div>
-        <h1>EditEvent nr: {this.props.event.id}</h1>
-        <p>this is the event: {this.props.event.event}</p>
-        <p>this is the event: {this.props.event.text}</p>
-        <form>
+        <h1>EditEvent nr: {this.state.event.id}</h1>
+        <p>this is the event: {this.state.event.event}</p>
+        <p>this is the event: {this.state.event.text}</p>
+        <p>this is the image_url: {this.state.event.image_url}</p>
+
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
             <h3>Text</h3>
             <textarea rows='8' colts ='80'
@@ -56,10 +58,11 @@ export default class EditEvent extends Component {
             <h3>image URL</h3>
             <textarea rows='8' colts ='80'
               name='image_url'
-              value={image_url}
+              value={img_url}
               onChange={this.handleChange.bind(this)}
             />
           </label><br/>
+
           <button type='submit'>CHANGE</button>
         </form>
 
