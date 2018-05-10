@@ -2,6 +2,29 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 class LoginForm extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     username: '',
+  //     email: '',
+  //     password: ''
+  //   }
+  // }
+
+  // // when you start to type in the input box it will change the state
+  // handleInputChange(e) {
+  //   cont { name, value } = e.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // }
+
+  // //
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   this.props.
+  // }
+
   render() {
     return (
       <div>

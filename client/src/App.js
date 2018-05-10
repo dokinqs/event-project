@@ -44,6 +44,35 @@ class App extends Component {
     return event[0]
   }
 
+  // this function with check the authorization of the user who is logged in
+  // if not they will get the not logged in the console log
+  // checkToken() {
+  //   const authToken = localStorage.getItem(authToken);
+  //   fetch('/api/auth', {
+  //     method: 'GET',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //       'Authorization': `Bearer ${authToken}`
+  //     }
+  //   })
+  //   .then(resp => {
+  //     if (!resp.ok) throw new Error(resp.message);
+  //     return resp.json()
+  //   })
+  //   .then(respBody => {
+  //     this.setState({
+  //       currentUser: respBody.user
+  //     })
+  //   })
+  //   .catch(err => {
+  //     console.log('not logged in');
+  //     localStorage.removeItem('authToken');
+  //     this.setState({
+  //       currentUser: null
+  //     });
+  //   })
+  // }
+
   render() {
     console.log(this.state.events)
     return (
