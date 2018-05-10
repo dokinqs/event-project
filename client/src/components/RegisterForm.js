@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-class LoginForm extends Component {
+class RegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ class LoginForm extends Component {
   //
   handleSubmit(e) {
     e.preventDefault();
-    this.props.handleLogin(this.state);
+    this.props.handleRegister(this.state);
     this.setState({
       username: '',
       email: '',
@@ -35,7 +35,7 @@ class LoginForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="login form" method="post">
-        <label htmlFor="username">Username
+        <label htmlFor="username">Create Username
           <input 
             type="text" 
             onChange={this.handleInputChange}
@@ -43,7 +43,7 @@ class LoginForm extends Component {
             name="username" 
           />
         </label>
-        <label htmlFor="Email">Email
+        <label htmlFor="email">Enter Email
           <input 
             type="text" 
             onChange={this.handleInputChange}
@@ -51,7 +51,7 @@ class LoginForm extends Component {
             name="email" 
           />
         </label>
-        <label htmlFor="password">Password
+        <label htmlFor="password">Create Password
           <input 
             type="password" 
             onChange={this.handleInputChange}
@@ -61,7 +61,7 @@ class LoginForm extends Component {
         </label>
         <input 
           type="submit" 
-          value="Login" 
+          value="Register" 
           onSubmit={this.handleSubmit}
         />
       </form>
@@ -69,4 +69,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default RegisterForm;
