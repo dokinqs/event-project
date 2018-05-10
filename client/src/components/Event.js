@@ -7,7 +7,8 @@ export default class EditEvent extends Component {
     this.state = {
       event: Object.assign({
         event: '',
-        text: ''
+        text: '',
+        img_url: ''
       }, props.event)
     }
   }
@@ -19,13 +20,14 @@ editEvent(id) {
 
   render() {
     console.log('this is editevent', this.props.event)
-    const { event, text, id } = this.state.event
+    const { event, text, id, img_url } = this.state.event
     return (
       <div>
         <h3>Edit Event: {id}</h3>
         <p>{event}</p>
         <p>{text}</p>
-        <Link to={`/api/event/${id}/edit`}><button>Edit Event</button></Link>
+        <p>{img_url}</p>
+        <Link to={`/api/events/${id}/edit`}><button>Edit Event</button></Link>
       </div>
     )
   }

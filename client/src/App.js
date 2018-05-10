@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 import EditEvent from './components/EditEvent';
 import Event from './components/Event';
 import LoginForm from './components/LoginForm';
+import CreateEvent from './components/CreateEvent';
+import EventForm from './components/EventForm';
 
 class App extends Component {
   constructor(props) {
@@ -45,6 +47,23 @@ class App extends Component {
     const event = (this.state.events).filter(t => (t.id === parseInt(id, 10)));
     console.log(event)
     return event[0]
+  }
+
+  CreateEvent(event) {
+    fetch('/api/events/new', {
+      method: 'POST',
+      body: JSON.stringfy(event),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(resBody => {
+      this.setState((prevState, props) => {
+        return {
+          quotes: prevState.quotes.concat(resBody.data)
+        }
+      })
+    })
   }
 
   updateEvent(event) {
@@ -111,7 +130,7 @@ class App extends Component {
         })
       })
   }
-  
+
   handleLogin(creds) {
     this.loginRequest(creds);
   }
@@ -134,7 +153,8 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path='/api/event/:id/edit' component={(props) => (
+          <Route exact path='/api/events/new' component={CreateEvent}/>
+          <Route exact path='/api/events/:id/edit' component={(props) => (
             <EditEvent
               {...props}
               event={this.findEvent(props.match.params.id)}

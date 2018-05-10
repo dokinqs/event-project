@@ -6,9 +6,10 @@ eventRouter.route('/')
   .get(
     eventController.getAll,
     respController.sendOkResp,
-    respController.sendErrResp)
+    respController.sendErrResp);
 
 //create an event
+eventRouter.route('/new')
   .post(
     eventController.create,
     respController.sendOkResp,
