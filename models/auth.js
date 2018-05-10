@@ -19,6 +19,7 @@ function register(cred) {
     });
 }
 
+
 function findByEmail(email) {
   return db.one(`
     SELECT * FROM users
