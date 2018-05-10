@@ -18,6 +18,10 @@ class App extends Component {
     this.findEvent = this.findEvent.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchEvents();
+  }
+
   fetchEvents() {
     fetch('/api/events')
       .then(resp => {
@@ -32,15 +36,11 @@ class App extends Component {
   }
 
   findEvent(id) {
-    console.log(id)
-    console.log(this.state.events[0].id)
+    // id = parseInt(id, 10)
+    // console.log(this.state.events[0].id)
     const event = (this.state.events).filter(t => (t.id === parseInt(id, 10)));
     console.log(event)
     return event[0]
-  }
-
-  componentDidMount() {
-    this.fetchEvents();
   }
 
   render() {
@@ -49,7 +49,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path={`/api/events/:id`} component={(props) => (
+          <Route path='/api/events/:id' component={(props) => (
             <EditEvent
               {...props}
               event={this.findEvent(props.match.params.id)}
