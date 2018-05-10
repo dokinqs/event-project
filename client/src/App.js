@@ -22,10 +22,6 @@ class App extends Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  componentDidMount() {
-    this.fetchEvents();
-  }
-
   fetchEvents() {
     fetch('/api/events')
       .then(resp => {
@@ -116,16 +112,21 @@ class App extends Component {
     this.loginRequest(creds);
   }
 
-  handleSubmit(quote) {
-    this.createQuote(quote);
-  }
+  // handleSubmit(quote) {
+  //   this.createEvent(event);
+  // }
 
-  handleDelete(id) {
-    this.deleteQuote(id);
-  }
+  // handleDelete(id) {
+  //   this.deleteEvent(id);
+  // }
 
-  handleEdit(quote, id) {
-    this.updateQuote(quote, id);
+  // handleEdit(event, id) {
+  //   this.updateEvent(quote, id);
+  // }
+
+  componentDidMount() {
+    this.fetchEvents();
+    this.checkToken();
   }
 
   render() {
@@ -155,7 +156,12 @@ class App extends Component {
                 events={this.state.events}
               />
           )} />
-          <Route exact path='/api/auth/login' component={LoginForm} />
+          <Route exact path='/api/auth/login' component={(props) => ( 
+            <LoginForm
+              {...props}
+                handleLogin={this.handleLogin}
+            />
+          )} />
         <Route path='/' component={Home}/>
 
         </Switch>

@@ -7,7 +7,7 @@ class LoginForm extends Component {
     this.state = {
       username: '',
       email: '',
-      password: ''
+      pw_digest: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,39 +24,46 @@ class LoginForm extends Component {
   //
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onLogin(this.state);
+    this.props.handleLogin(this.state);
     this.setState({
       username: '',
       email: '',
-      password: ''
+      pw_digest: ''
     });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} class="login form" method="post">
+      <form onSubmit={this.handleSubmit} className="login form" method="post">
         <label htmlFor="username">Username
           <input 
             type="text" 
+            onChange={this.handleInputChange}
+            value={this.state.username}
             name="username" 
-            id="username" 
           />
         </label>
         <label htmlFor="Email">Email
           <input 
             type="text" 
-            name="Email" 
-            id="Email" 
+            onChange={this.handleInputChange}
+            value={this.state.email}
+            name="email" 
           />
         </label>
         <label htmlFor="password">Password
           <input 
             type="password" 
-            name="password" 
-            id="password" 
+            onChange={this.handleInputChange}
+            value={this.state.pw_digest}
+            name="pw_digest" 
           />
         </label>
-        <input id="submit" type="submit" value="Login" />
+        <input 
+          type="submit" 
+          value="Login" 
+          onSubmit={this.handleSubmit}
+        />
       </form>
     )
   }
