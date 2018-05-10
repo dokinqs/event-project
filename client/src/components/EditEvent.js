@@ -29,7 +29,9 @@ export default class EditEvent extends Component {
     // const { event, text, id, img_url} = this.state.event
     return (
       <div>
-        <h1>EditEvent works!</h1>
+        <h1>EditEvent nr: {this.props.event.id}</h1>
+        <p>this is the event: {this.props.event.event}</p>
+        <p>this is the event: {this.props.event.text}</p>
 
       </div>
     )
