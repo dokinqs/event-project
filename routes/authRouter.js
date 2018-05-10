@@ -8,6 +8,6 @@ ar.get('/', authController.restrict, (req, res) => res.json({
 
 // /register is the path when user is going to
 ar.post('/register', authController.register);
-// ar.post('/login', authController.login);
+ar.post('/login', authController.login);
 
 module.exports = ar;
