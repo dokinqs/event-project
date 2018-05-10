@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
-// import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function Event({ event }) {
-	// render() {
-		// console.log('events: ', this.props.events);
-		return (
-			<div>
-    		<h3>EVENT # </h3>
-			</div>
-	  )
-	// }
+export default class EditEvent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      event: Object.assign({
+        event: '',
+        text: ''
+      }, props.event)
+    }
+  }
+  //test if the update event works
+editEvent(id) {
+  this.props.history.push(`/api/events/${id}`);
 }
-//display a single event
+//this will be accessed with the onClick event on EditEvent.js
 
-export default Event;
-// <li className='eventLi'>
-// <h3>Event {this.props.event.id}</h3>
-// <Link to={`/events/${this.props.event.id}/edit`}>Edit</Link>
-// <h5>{this.props.event.text}</h5>
-// </li>
+  render() {
+    console.log('this is editevent', this.props.event)
+    const { event, text, id } = this.state.event
+    return (
+      <div>
+        <h3>Edit Event: {id}</h3>
+        <p>{event}</p>
+        <p>{text}</p>
+        <Link to={`/api/event/${id}/edit`}><button>Edit Event</button></Link>
+      </div>
+    )
+  }
+}

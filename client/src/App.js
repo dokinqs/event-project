@@ -5,9 +5,8 @@ import Events from './components/Events';
 import Navbar from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
-import Event from './components/Event';
 import EditEvent from './components/EditEvent';
-import LoginForm from './components/LoginForm';
+import Event from './components/Event';
 
 class App extends Component {
   constructor(props) {
@@ -44,34 +43,21 @@ class App extends Component {
     return event[0]
   }
 
-  // this function with check the authorization of the user who is logged in
-  // if not they will get the not logged in the console log
-  // checkToken() {
-  //   const authToken = localStorage.getItem(authToken);
-  //   fetch('/api/auth', {
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //       'Authorization': `Bearer ${authToken}`
-  //     }
-  //   })
-  //   .then(resp => {
-  //     if (!resp.ok) throw new Error(resp.message);
-  //     return resp.json()
-  //   })
-  //   .then(respBody => {
-  //     this.setState({
-  //       currentUser: respBody.user
-  //     })
-  //   })
-  //   .catch(err => {
-  //     console.log('not logged in');
-  //     localStorage.removeItem('authToken');
-  //     this.setState({
-  //       currentUser: null
-  //     });
-  //   })
-  // }
+  updateEvent(event) {
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/jason',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringfy(event)
+    };
+    const URL = `/api/events/${event.id}`;
+    fetch(URL, options).then(resp => {
+      if (!resp.ok) throw new Error(resp.statusMessage);
+      return resp.json();
+    })
+  }
 
   render() {
     console.log(this.state.events)
@@ -79,8 +65,15 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path='/api/events/:id' component={(props) => (
+          <Route exact path='/api/event/:id/edit' component={(props) => (
             <EditEvent
+              {...props}
+              event={this.findEvent(props.match.params.id)}
+              onSubmit={this.updateEvent.bind(this)}
+            />
+          )} />
+          <Route path='/api/events/:id' component={(props) => (
+            <Event
               {...props}
               event={this.findEvent(props.match.params.id)}
               // onSubmit={this.updateEvent.bind(this)}
