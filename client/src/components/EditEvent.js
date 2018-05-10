@@ -7,7 +7,7 @@ export default class EditEvent extends Component {
       event: Object.assign({
         event: '',
         text: '',
-        image_url: ''
+        img_url: ''
       }, props.event)
     }
   }
@@ -20,7 +20,7 @@ export default class EditEvent extends Component {
       }
     }))
     // console.log(name, "with value: ", value) checking if state changes.
-  }
+  }// onchange this function sets state to the new value
   handleSubmit(e) {
     e.preventDefault();
     this.props.onSubmit(this.state.event);
@@ -33,9 +33,7 @@ export default class EditEvent extends Component {
     return (
       <div>
         <h1>EditEvent nr: {this.state.event.id}</h1>
-        <p>this is the event: {this.state.event.event}</p>
-        <p>this is the event: {this.state.event.text}</p>
-        <p>this is the image_url: {this.state.event.image_url}</p>
+
 
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
@@ -57,7 +55,7 @@ export default class EditEvent extends Component {
           <label>
             <h3>image URL</h3>
             <textarea rows='8' colts ='80'
-              name='image_url'
+              name='img_url'
               value={img_url}
               onChange={this.handleChange.bind(this)}
             />
