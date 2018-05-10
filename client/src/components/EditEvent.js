@@ -1,23 +1,35 @@
 import React, { Component } from 'react';
 
 export default class EditEvent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      event: Object.assign({
-        event: '',
-        text: ''
-      }, props.event)
-    }
+  // contructor(props){
+  //   super(props);
+  //   this.state = {
+  //     event: Object.assign({
+  //       event: '',
+  //       text: ''
+  //     }, props.event)
+  //   }
+  // }
+  handleChange(e) {
+    const { name, value} = e.target;
+    this.setState((prevState, props) => ({
+      event: {
+        ...prevState.event,
+        [name]: value
+      }
+    }))
   }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onSubmit(this.state.event);
+    // window.location.reload();
+  }
+
   render() {
-    console.log('this is editevent', this.props.event)
-    const { event, text, id } = this.state.event
+    // const { event, text, id, img_url} = this.state.event
     return (
       <div>
-        <h3>Edit Event: {id}</h3>
-        <p>{event}</p>
-        <p>{text}</p>
+        <h1>EditEvent works!</h1>
 
       </div>
     )

@@ -5,8 +5,8 @@ import Events from './components/Events';
 import Navbar from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
-import Event from './components/Event';
 import EditEvent from './components/EditEvent';
+import Event from './components/Event';
 
 class App extends Component {
   constructor(props) {
@@ -42,15 +42,36 @@ class App extends Component {
     console.log(event)
     return event[0]
   }
-
+  updateEvent(event) {
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/jason',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringfy(event)
+    };
+    const URL = `/api/events/${event.id}`;
+    fetch(URL, options).then(resp => {
+      if (!resp.ok) throw new Error(resp.statusMessage);
+      return resp.json();
+    })
+  }
   render() {
     console.log(this.state.events)
     return (
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path='/api/events/:id' component={(props) => (
+          <Route exact path='/api/event/:id/edit' component={(props) => (
             <EditEvent
+              {...props}
+              event={this.findEvent(props.match.params.id)}
+              onSubmit={this.updateEvent.bind(this)}
+            />
+          )} />
+          <Route path='/api/events/:id' component={(props) => (
+            <Event
               {...props}
               event={this.findEvent(props.match.params.id)}
               // onSubmit={this.updateEven t.bind(this)}

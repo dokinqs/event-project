@@ -18,5 +18,5 @@ function register(cred) {
       `, newUser)
     });
 }
-
+//
 module.exports = {register};
