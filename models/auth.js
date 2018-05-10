@@ -18,10 +18,6 @@ function register(cred) {
       `, newUser)
     });
 }
-<<<<<<< HEAD
-//
-module.exports = {register};
-=======
 
 function findByEmail(email) {
   return db.one(`
@@ -49,4 +45,3 @@ module.exports = {
   register,
   login
 };
->>>>>>> 748b47935c423ee0e06d4edc485fab95ade251a3

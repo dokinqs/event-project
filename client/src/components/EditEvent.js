@@ -55,8 +55,8 @@ export default class EditEvent extends Component {
           <label>
             <h3>image URL</h3>
             <textarea rows='8' colts ='80'
-              name='image_url'
-              value={image_url}
+              name='img_url'
+              value={img_url}
               onChange={this.handleChange.bind(this)}
             />
           </label><br/>
