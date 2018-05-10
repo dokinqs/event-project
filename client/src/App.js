@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Event from './components/Event';
 import EditEvent from './components/EditEvent';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class App extends Component {
             <EditEvent
               {...props}
               event={this.findEvent(props.match.params.id)}
-              // onSubmit={this.updateEven t.bind(this)}
+              // onSubmit={this.updateEvent.bind(this)}
             />
           )}
         />
@@ -63,6 +64,7 @@ class App extends Component {
                 events={this.state.events}
               />
           )} />
+          <Route exact path='/api/auth/login' component={LoginForm} />
         <Route path='/' component={Home}/>
 
         </Switch>

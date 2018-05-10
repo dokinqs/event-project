@@ -14,6 +14,9 @@ class Navbar extends Component {
           <Link to='/api/events'>
             <li className="nav-li">Events</li>
           </Link>
+          <Link to='/api/auth/login'>
+            <li className="nav-li">Login</li>
+          </Link>
         </ul>
       </div>
     )
