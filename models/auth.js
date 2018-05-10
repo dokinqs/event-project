@@ -18,7 +18,10 @@ function register(cred) {
       `, newUser)
     });
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 65bb823f8a86ffc920df22fd34666f5b5dd378a0
 
 function findByEmail(email) {
   return db.one(`

@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
+import jwt from 'jwt-js';
 import Events from './components/Events';
 import Navbar from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import EditEvent from './components/EditEvent';
 import Event from './components/Event';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      events: []
+      events: [],
+      currentUser: null
     }
     this.findEvent = this.findEvent.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +46,7 @@ class App extends Component {
     console.log(event)
     return event[0]
   }
+
   updateEvent(event) {
     const options = {
       method: 'PUT',
@@ -49,7 +54,7 @@ class App extends Component {
         'Accept': 'application/jason',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringfy(event)
+      body: JSON.stringify(event)
     };
     const URL = `/api/events/${event.id}`;
     fetch(URL, options).then(resp => {
@@ -57,6 +62,72 @@ class App extends Component {
       return resp.json();
     })
   }
+
+  checkToken() {
+    const authToken = localStorage.getItem('authToken');
+    fetch('/api/auth', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      }
+    })
+    .then(resp => {
+      if (!resp.ok) throw new Error(resp.mesage);
+      return resp.json();
+    })
+    .then(respBody => {
+      this.setState({
+        currentUser: respBody.user
+      })
+    })
+    .catch(err => {
+      console.log('not logged in');
+      localStorage.removeItem('authToken');
+      this.setState({
+        currentUser: null
+      })
+    })
+  }
+
+  loginRequest(creds) {
+    console.log('trying to log in with creds', creds);
+    fetch('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify(creds),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(resp => {
+        if (!resp.ok) throw new Error(resp.statusMessage);
+        return resp.json();
+      })
+      .then(respBody => {
+        console.log(respBody);
+        localStorage.setItem('authToken', respBody.token);
+        this.setState({
+          currentUser: jwt.decodeToken(respBody.token).payload
+        })
+      })
+  }
+
+  handleLogin(creds) {
+    this.loginRequest(creds);
+  }
+
+  handleSubmit(quote) {
+    this.createQuote(quote);
+  }
+
+  handleDelete(id) {
+    this.deleteQuote(id);
+  }
+
+  handleEdit(quote, id) {
+    this.updateQuote(quote, id);
+  }
+
   render() {
     console.log(this.state.events)
     return (
@@ -74,7 +145,7 @@ class App extends Component {
             <Event
               {...props}
               event={this.findEvent(props.match.params.id)}
-              // onSubmit={this.updateEven t.bind(this)}
+              // onSubmit={this.updateEvent.bind(this)}
             />
           )}
         />
@@ -84,6 +155,7 @@ class App extends Component {
                 events={this.state.events}
               />
           )} />
+          <Route exact path='/api/auth/login' component={LoginForm} />
         <Route path='/' component={Home}/>
 
         </Switch>
