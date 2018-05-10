@@ -52,7 +52,7 @@ class App extends Component {
   CreateEvent(event) {
     fetch('/api/events/new', {
       method: 'POST',
-      body: JSON.stringfy(event),
+      body: JSON.stringify(event),
       headers: {
         'content-type': 'application/json'
       }
@@ -153,7 +153,12 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path='/api/events/new' component={CreateEvent}/>
+          <Route exact path='/api/events/new'
+          component={() => (
+            <CreateEvent
+              onSubmit={this.CreateEvent.bind(this)} />
+            )}
+          />
           <Route exact path='/api/events/:id/edit' component={(props) => (
             <EditEvent
               {...props}
