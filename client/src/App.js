@@ -33,7 +33,6 @@ class App extends Component {
         if (!resp.ok) {
           throw Error('oops: ', resp.message);
         }
-
         return resp.json();
       }).then(data => this.setState ({
           events: data.data
@@ -41,10 +40,7 @@ class App extends Component {
   }
 
   findEvent(id) {
-    // id = parseInt(id, 10)
-    // console.log(this.state.events[0].id)
     const event = (this.state.events).filter(t => (t.id === parseInt(id, 10)));
-    console.log(event)
     return event[0]
   }
 
@@ -145,6 +141,7 @@ class App extends Component {
           currentUser: jwt.decodeToken(respBody.token).payload
         })
         console.log('logged in with creds!', creds);
+        console.log('WARNING CHECK!!!!: ', this.state.currentUser)
       })
   }
 
@@ -200,7 +197,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state.events)
+    console.log(this.state.currentUser)
     return (
       <div className="App">
         <Navbar />
@@ -246,7 +243,12 @@ class App extends Component {
                 handleRegister={this.handleRegister}
             />
           )} />
-        <Route path='/' component={Home}/>
+        <Route path='/' component={(props) => (
+          <Home
+            {...props}
+            name={this.state.currentUser}
+          />
+        )} />
 
         </Switch>
         <Footer />

@@ -37,35 +37,35 @@ class LoginForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="login form" method="post">
-        {this.state.redirectHome && <Redirect to='/' />}
+        {this.state.redirectHome && <Redirect to='/'/>}
 
         <label htmlFor="username">Username
-          <input 
-            type="text" 
+          <input
+            type="text"
             onChange={this.handleInputChange}
             value={this.state.username}
-            name="username" 
+            name="username"
           />
         </label>
         <label htmlFor="Email">Email
-          <input 
-            type="text" 
+          <input
+            type="text"
             onChange={this.handleInputChange}
             value={this.state.email}
-            name="email" 
+            name="email"
           />
         </label>
         <label htmlFor="password">Password
-          <input 
-            type="password" 
+          <input
+            type="password"
             onChange={this.handleInputChange}
             value={this.state.pw_digest}
-            name="pw_digest" 
+            name="pw_digest"
           />
         </label>
-        <input 
-          type="submit" 
-          value="Login" 
+        <input
+          type="submit"
+          value="Login"
           onSubmit={this.handleSubmit}
         />
       </form>

@@ -46,7 +46,8 @@ function login(req, res, next) {
     }))
     .then(data => tokenService.makeToken({
       id: data.id,
-      email: data.email
+      email: data.email,
+      username: data.username
     }))
     .then(token => {
       res.json({

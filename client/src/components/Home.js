@@ -3,11 +3,15 @@ import { Route } from 'react-router-dom';
 
 class Home extends Component {
 
+
+
   render() {
-    console.log(this.props.events);
+    console.log(this.props.name)
+    const greeting = this.props.name ? (this.props.name.username) : "Guest"
+
     return (
       <div>
-      <h2>Welcome Home!</h2>
+      <h2>Welcome {greeting}!</h2>
       <img src='https://files.slack.com/files-pri/T0351JZQ0-FAMD93QBG/logomakr_9ufv8t.png'/>
     </div>
     )
