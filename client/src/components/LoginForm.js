@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      redirectHome: false,
       username: '',
       email: '',
       pw_digest: ''
@@ -28,13 +29,16 @@ class LoginForm extends Component {
     this.setState({
       username: '',
       email: '',
-      pw_digest: ''
+      pw_digest: '',
+      redirectHome: true
     });
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="login form" method="post">
+        {this.state.redirectHome && <Redirect to='/' />}
+
         <label htmlFor="username">Username
           <input 
             type="text" 

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      redirectHome: false,
       username: '',
       email: '',
       pw_digest: ''
@@ -28,13 +29,17 @@ class RegisterForm extends Component {
     this.setState({
       username: '',
       email: '',
-      pw_digest: ''
+      pw_digest: '',
+      redirectHome: true
     });
   }
 
   render() {
     return (
+      <div> Register Form 
       <form onSubmit={this.handleSubmit} className="login form" method="post">
+        {this.state.redirectHome && <Redirect to='/api/auth/login' />}
+
         <label htmlFor="username">Create Username
           <input 
             type="text" 
@@ -65,6 +70,7 @@ class RegisterForm extends Component {
           onSubmit={this.handleSubmit}
         />
       </form>
+      </div>
     )
   }
 }

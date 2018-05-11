@@ -28,7 +28,7 @@ editEvent(id) {
         <p>{text}</p>
         <p>{img_url}</p>
         <Link to={`/api/events/${id}/edit`}><button>Edit Event</button></Link>
-        <button onClick={this.props.del} > DELETE</button>
+        <Link to="/api/events"> <button onClick={this.props.del} > DELETE</button> </Link>
       </div>
     )
   }

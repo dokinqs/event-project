@@ -27,7 +27,7 @@ export default class EventForm extends Component {
 		this.props.func(this.state.event);
 		window.location.reload();
 		this.setState({
-		redirectHome: true
+			redirectHome: true
 		});
 	}
 	render() {

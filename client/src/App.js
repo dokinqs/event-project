@@ -187,6 +187,7 @@ class App extends Component {
   handleDelete(id) {
     this.deleteEvent(id);
     window.location.reload();
+    // this.props.history.push(`/api/events`);
   }
 
   // handleEdit(event, id) {
