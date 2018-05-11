@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Link } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class LoginForm extends Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   // when you start to type in the input box it will change the state
@@ -33,11 +34,15 @@ class LoginForm extends Component {
       redirectHome: true
     });
   }
+  handleLogout(e) {
+    e.preventDefault();
+    this.props.handleLogOut();
+  }
 
 
   render() {
     const selected = this.props.currentUser;
-    const details = selected ? (<h1> already logged in</h1>) :
+    const details = selected ? (<Link to='/'><button onClick={this.handleLogout}>Log Out</button></Link>) :
     (<form onSubmit={this.handleSubmit} className="login form" method="post">
       {this.state.redirectHome && <Redirect to='/'/>}
 

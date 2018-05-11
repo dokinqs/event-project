@@ -190,12 +190,18 @@ class App extends Component {
   // handleEdit(event, id) {
   //   this.updateEvent(event, id);
   // }
-
+  handleLogout() {
+    this.setState{
+      currentUser: null
+    }
+    console.log("handle logout connection works")
+  }
 
   componentDidMount() {
     this.fetchEvents();
     this.checkToken();
   }
+
 
   render() {
     console.log(this.state.currentUser)
@@ -236,6 +242,7 @@ class App extends Component {
             <LoginForm
               {...props}
                 handleLogin={this.handleLogin}
+                handleLogOut={this.handleLogout}
                 currentUser={this.state.currentUser}
             />
           )} />
@@ -243,7 +250,6 @@ class App extends Component {
             <RegisterForm
               {...props}
                 handleRegister={this.handleRegister}
-
             />
           )} />
         <Route path='/' component={(props) => (

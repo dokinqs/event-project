@@ -18,7 +18,7 @@ class Navbar extends Component {
             <li className="nav-li">New</li>
           </Link>
           <Link to='/api/auth/login'>
-            <li className="nav-li">Login</li>
+            <li className="nav-li">Login/Log Out</li>
           </Link>
           <Link to='/api/auth/register'>
             <li className="nav-li">Register</li>
