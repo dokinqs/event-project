@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import jwt from 'jwt-js';
 import Events from './components/Events';
 import Navbar from './components/Header';
@@ -22,7 +22,7 @@ class App extends Component {
       currentUser: null
     }
     this.findEvent = this.findEvent.bind(this);
-    this.deleteEvent = this.deleteEvent.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
   }
@@ -48,7 +48,7 @@ class App extends Component {
     return event[0]
   }
 
-  CreateEvent(event) {
+  createEvent(event) {
     fetch('/api/events/new', {
       method: 'POST',
       body: JSON.stringify(event),
@@ -85,10 +85,10 @@ class App extends Component {
     fetch(`/api/events/${id}`, {
       method: 'DELETE'
     })
-    // .then(resp => {
-    //   if (!resp.ok) throw new Error(resp.statusMessage);
-    //   return resp.json();
-    // })
+    .then(resp => {
+      if (!resp.ok) throw new Error(resp.statusMessage);
+      return resp.json();
+    })
     .then(respBody => {
       this.setState((prevState, props) => {
         return {
@@ -180,16 +180,17 @@ class App extends Component {
     this.registerRequest(creds);
   }
 
-  // handleSubmit(quote) {
+  // handleSubmit(event) {
   //   this.createEvent(event);
   // }
 
-  // handleDelete(id) {
-  //   this.deleteEvent(id);
-  // }
+  handleDelete(id) {
+    this.deleteEvent(id);
+    window.location.reload();
+  }
 
   // handleEdit(event, id) {
-  //   this.updateEvent(quote, id);
+  //   this.updateEvent(event, id);
   // }
 
   componentDidMount() {
@@ -206,7 +207,7 @@ class App extends Component {
           <Route exact path='/api/events/new'
           component={() => (
             <CreateEvent
-              onSubmit={this.CreateEvent.bind(this)} />
+              onSubmit={this.createEvent.bind(this)} />
             )}
           />
           <Route exact path='/api/events/:id/edit' component={(props) => (
@@ -221,7 +222,7 @@ class App extends Component {
             <Event
               {...props}
               event={this.findEvent(props.match.params.id)}
-              del={this.deleteEvent(props.match.params.id)}
+              del={() => this.handleDelete(props.match.params.id)}
               // onSubmit={this.updateEvent.bind(this)}
             />
           )}

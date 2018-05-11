@@ -19,7 +19,7 @@ editEvent(id) {
 //this will be accessed with the onClick event on EditEvent.js
 
   render() {
-    // console.log('this is editevent', this.props.event)
+    console.log('What is happening?!?!?')
     const { event, text, id, img_url } = this.state.event
     return (
       <div>
