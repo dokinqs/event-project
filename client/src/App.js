@@ -191,6 +191,7 @@ class App extends Component {
   //   this.updateEvent(event, id);
   // }
 
+
   componentDidMount() {
     this.fetchEvents();
     this.checkToken();
@@ -235,12 +236,14 @@ class App extends Component {
             <LoginForm
               {...props}
                 handleLogin={this.handleLogin}
+                currentUser={this.state.currentUser}
             />
           )} />
           <Route exact path='/api/auth/register' component={(props) => (
             <RegisterForm
               {...props}
                 handleRegister={this.handleRegister}
+
             />
           )} />
         <Route path='/' component={(props) => (

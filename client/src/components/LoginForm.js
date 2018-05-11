@@ -34,41 +34,48 @@ class LoginForm extends Component {
     });
   }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} className="login form" method="post">
-        {this.state.redirectHome && <Redirect to='/'/>}
 
-        <label htmlFor="username">Username
-          <input
-            type="text"
-            onChange={this.handleInputChange}
-            value={this.state.username}
-            name="username"
-          />
-        </label>
-        <label htmlFor="Email">Email
-          <input
-            type="text"
-            onChange={this.handleInputChange}
-            value={this.state.email}
-            name="email"
-          />
-        </label>
-        <label htmlFor="password">Password
-          <input
-            type="password"
-            onChange={this.handleInputChange}
-            value={this.state.pw_digest}
-            name="pw_digest"
-          />
-        </label>
+  render() {
+    const selected = this.props.currentUser;
+    const details = selected ? (<h1> already logged in</h1>) :
+    (<form onSubmit={this.handleSubmit} className="login form" method="post">
+      {this.state.redirectHome && <Redirect to='/'/>}
+
+      <label htmlFor="username">Username
         <input
-          type="submit"
-          value="Login"
-          onSubmit={this.handleSubmit}
+          type="text"
+          onChange={this.handleInputChange}
+          value={this.state.username}
+          name="username"
         />
-      </form>
+      </label>
+      <label htmlFor="Email">Email
+        <input
+          type="text"
+          onChange={this.handleInputChange}
+          value={this.state.email}
+          name="email"
+        />
+      </label>
+      <label htmlFor="password">Password
+        <input
+          type="password"
+          onChange={this.handleInputChange}
+          value={this.state.pw_digest}
+          name="pw_digest"
+        />
+      </label>
+      <input
+        type="submit"
+        value="Login"
+        onSubmit={this.handleSubmit}
+      />
+    </form>)
+    console.log(selected)
+    return (
+      <div>
+        {details}
+      </div>
     )
   }
 }
