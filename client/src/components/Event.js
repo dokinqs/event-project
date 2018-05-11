@@ -19,7 +19,7 @@ editEvent(id) {
 //this will be accessed with the onClick event on EditEvent.js
 
   render() {
-    console.log('this is editevent', this.props.event)
+    // console.log('this is editevent', this.props.event)
     const { event, text, id, img_url } = this.state.event
     return (
       <div>
@@ -28,6 +28,7 @@ editEvent(id) {
         <p>{text}</p>
         <p>{img_url}</p>
         <Link to={`/api/events/${id}/edit`}><button>Edit Event</button></Link>
+        <button onClick={this.props.del} > DELETE</button>
       </div>
     )
   }

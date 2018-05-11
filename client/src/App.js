@@ -9,10 +9,8 @@ import Footer from './components/Footer';
 import EditEvent from './components/EditEvent';
 import Event from './components/Event';
 import LoginForm from './components/LoginForm';
-
 import CreateEvent from './components/CreateEvent';
 import EventForm from './components/EventForm';
-
 import RegisterForm from './components/RegisterForm';
 
 class App extends Component {
@@ -24,6 +22,7 @@ class App extends Component {
       currentUser: null
     }
     this.findEvent = this.findEvent.bind(this);
+    this.deleteEvent = this.deleteEvent.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
   }
@@ -60,7 +59,7 @@ class App extends Component {
     .then(resBody => {
       this.setState((prevState, props) => {
         return {
-          quotes: prevState.quotes.concat(resBody.data)
+          events: prevState.event.concat(resBody.data)
         }
       })
     })
@@ -79,6 +78,23 @@ class App extends Component {
     fetch(URL, options).then(resp => {
       if (!resp.ok) throw new Error(resp.statusMessage);
       return resp.json();
+    })
+  }
+
+  deleteEvent(id) {
+    fetch(`/api/events/${id}`, {
+      method: 'DELETE'
+    })
+    // .then(resp => {
+    //   if (!resp.ok) throw new Error(resp.statusMessage);
+    //   return resp.json();
+    // })
+    .then(respBody => {
+      this.setState((prevState, props) => {
+        return {
+          events: prevState.events.filter(event => event.id !== id)
+        }
+      })
     })
   }
 
@@ -182,7 +198,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.events)
+    // console.log(this.state.events)
     return (
       <div className="App">
         <Navbar />
@@ -198,12 +214,14 @@ class App extends Component {
               {...props}
               event={this.findEvent(props.match.params.id)}
               onSubmit={this.updateEvent.bind(this)}
+
             />
           )} />
           <Route path='/api/events/:id' component={(props) => (
             <Event
               {...props}
               event={this.findEvent(props.match.params.id)}
+              del={this.deleteEvent(props.match.params.id)}
               // onSubmit={this.updateEvent.bind(this)}
             />
           )}
