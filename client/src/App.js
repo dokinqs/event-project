@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import jwt from 'jwt-js';
+import jwt from 'jwt-js'; //jason web token
 import Events from './components/Events';
 import Navbar from './components/Header';
 import Home from './components/Home';
