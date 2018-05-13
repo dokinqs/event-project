@@ -64,7 +64,7 @@ export default class EventForm extends Component {
 						/>
 					</label><br/>
 
-					<button type='submit'>CHANGE</button>
+					<button type='submit'>{id ? 'edit' : 'create'}</button>
 				</form>
 
 			</div>
