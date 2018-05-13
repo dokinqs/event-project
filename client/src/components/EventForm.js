@@ -9,10 +9,12 @@ export default class EventForm extends Component {
 			event: Object.assign({
 				event: '',
 				text: '',
-				img_url: ''
+				img_url: '',
+				user_id: this.props.user.id
 			}, props.event)
 		}
 	}
+
 	handleChange(e) {
 		const { name, value } = e.target;
 		this.setState((prevState, props) => ({
@@ -22,6 +24,7 @@ export default class EventForm extends Component {
 			}
 		}))
 	}
+
 	handleSubmit(e) {
 		e.preventDefault();
 		this.props.func(this.state.event);
@@ -36,7 +39,8 @@ export default class EventForm extends Component {
 		const { event, text, id, img_url} = this.state.event
 		return (
 			<div>
-
+				
+				<h1>{id ? 'Edit' : 'Create'} your event {this.props.user.username}!</h1>
 				<form onSubmit={this.handleSubmit.bind(this)} className={id ? 'edit' : 'create'}>
 					{this.state.redirectHome && <Redirect to='/api/events' />}
 
@@ -45,31 +49,34 @@ export default class EventForm extends Component {
 						<textarea rows='8' colts='80'
 							name='text'
 							value={text}
-							onChange={this.handleChange.bind(this)}
-						/>
+							onChange={this.handleChange.bind(this)} />
 					</label><br/>
+
 					<label>
 						<h3>Event</h3>
 						<textarea rows='8' colts ='80'
 							name='event'
 							value={event}
-							onChange={this.handleChange.bind(this)}
-						/>
+							onChange={this.handleChange.bind(this)} />
 					</label><br/>
+
 					<label>
 						<h3>image URL</h3>
 						<textarea rows='8' colts ='80'
 							name='img_url'
 							value={img_url}
-							onChange={this.handleChange.bind(this)}
-						/>
+							onChange={this.handleChange.bind(this)} />
 					</label><br/>
 
 					<button type='submit'>{id ? 'edit' : 'create'}</button>
+
 				</form>
 
 			</div>
 		)
 	}
-
 }
+
+
+
+// onClick={this.setState({event.user_id: (this.props.user.id)})}

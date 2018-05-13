@@ -33,6 +33,7 @@ class LoginForm extends Component {
       redirectHome: true
     });
   }
+
   handleLogout(e) {
     e.preventDefault();
     this.props.handleLogOut();
@@ -49,8 +50,7 @@ class LoginForm extends Component {
           type="text"
           onChange={this.handleInputChange}
           value={this.state.username}
-          name="username"
-        />
+          name="username" />
       </label>
 
       <label htmlFor="Email">Email
@@ -58,25 +58,24 @@ class LoginForm extends Component {
           type="text"
           onChange={this.handleInputChange}
           value={this.state.email}
-          name="email"
-        />
+          name="email" />
       </label>
-      
+
       <label htmlFor="password">Password
         <input
           type="password"
           onChange={this.handleInputChange}
           value={this.state.pw_digest}
-          name="pw_digest"
-        />
+          name="pw_digest" />
       </label>
+
       <input
         type="submit"
         value="Login"
-        onSubmit={this.handleSubmit}
-      />
+        onSubmit={this.handleSubmit} />
+        
     </form>)
-    console.log(selected)
+
     return (
       <div>
         {details}

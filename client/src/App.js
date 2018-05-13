@@ -141,14 +141,10 @@ class App extends Component {
         this.setState({
           currentUser: jwt.decodeToken(respBody.token).payload
         })
-        console.log('logged in with creds!', creds);
-        console.log('WARNING CHECK!!!!: ', this.state.currentUser)
       })
   }
 
-
   registerRequest(creds) {
-    console.log('trying to register with creds', creds);
     fetch('/api/auth/register', {
       method: 'POST',
       body: JSON.stringify(creds),
@@ -201,7 +197,6 @@ class App extends Component {
     this.checkToken();
   }
 
-
   render() {
     console.log(this.state.currentUser)
     return (
@@ -213,57 +208,51 @@ class App extends Component {
             <CreateEvent
               onSubmit={this.createEvent.bind(this)}
               user={this.state.currentUser}
+            /> )} />
 
-            />
-            )}
-          />
           <Route exact path='/api/events/:id/edit' component={(props) => (
             <EditEvent
               {...props}
               event={this.findEvent(props.match.params.id)}
               onSubmit={this.updateEvent.bind(this)}
+               user={this.state.currentUser}
+            /> )} />
 
-            />
-          )} />
           <Route path='/api/events/:id' component={(props) => (
             <Event
               {...props}
               event={this.findEvent(props.match.params.id)}
               del={() => this.handleDelete(props.match.params.id)}
-              // onSubmit={this.updateEvent.bind(this)}
-            />
-          )}
-        />
+            /> )} />
+
           <Route exact path='/api/events' component={(props) => (
               <Events
                 {...props}
                 events={this.state.events}
-              />
-          )} />
+              /> )} />
+
           <Route exact path='/api/auth/login' component={(props) => (
             <LoginForm
               {...props}
                 handleLogin={this.handleLogin}
                 handleLogOut={this.handleLogout}
                 currentUser={this.state.currentUser}
-            />
-          )} />
+            /> )} />
+
           <Route exact path='/api/auth/register' component={(props) => (
             <RegisterForm
               {...props}
                 handleRegister={this.handleRegister}
-            />
-          )} />
+            /> )} />
+
         <Route path='/' component={(props) => (
           <Home
             {...props}
             name={this.state.currentUser}
-          />
-        )} />
+          /> )} />
 
         </Switch>
         <Footer />
-
       </div>
     );
   }

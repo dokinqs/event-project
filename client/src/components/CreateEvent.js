@@ -5,6 +5,7 @@ export default class CreateEvent extends Component {
 		render(){
 			const loggedIn = this.props.user;
 			const logConfirm = loggedIn ? (
+				
 				<EventForm
 					id='create'
 					func={this.props.onSubmit}

@@ -3,11 +3,9 @@ import { Route } from 'react-router-dom';
 
 class Home extends Component {
 
-
-
   render() {
-    console.log(this.props.name)
     const greeting = this.props.name ? (this.props.name.username) : "Guest"
+    //personalized greeting to each username
 
     return (
       <div>

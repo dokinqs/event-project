@@ -22,10 +22,11 @@
   height: 50px;
   float: left;
 }
+
 .event-list {
   display: inline-block;
   border: solid 2px #000;
   width: 80%;
   text-align: center;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
