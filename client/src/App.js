@@ -25,6 +25,7 @@ class App extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   fetchEvents() {
@@ -191,10 +192,8 @@ class App extends Component {
   //   this.updateEvent(event, id);
   // }
   handleLogout() {
-    this.setState{
-      currentUser: null
-    }
-    console.log("handle logout connection works")
+    this.setState({currentUser: null});
+    console.log("handle logout connection works");
   }
 
   componentDidMount() {
