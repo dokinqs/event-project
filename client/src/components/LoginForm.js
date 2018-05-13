@@ -23,7 +23,6 @@ class LoginForm extends Component {
     });
   }
 
-  //
   handleSubmit(e) {
     e.preventDefault();
     this.props.handleLogin(this.state);
@@ -39,7 +38,6 @@ class LoginForm extends Component {
     this.props.handleLogOut();
   }
 
-
   render() {
     const selected = this.props.currentUser;
     const details = selected ? (<Link to='/'><button onClick={this.handleLogout}>Log Out</button></Link>) :
@@ -54,6 +52,7 @@ class LoginForm extends Component {
           name="username"
         />
       </label>
+
       <label htmlFor="Email">Email
         <input
           type="text"
@@ -62,6 +61,7 @@ class LoginForm extends Component {
           name="email"
         />
       </label>
+      
       <label htmlFor="password">Password
         <input
           type="password"

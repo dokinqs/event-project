@@ -211,7 +211,10 @@ class App extends Component {
           <Route exact path='/api/events/new'
           component={() => (
             <CreateEvent
-              onSubmit={this.createEvent.bind(this)} />
+              onSubmit={this.createEvent.bind(this)}
+              user={this.state.currentUser}
+
+            />
             )}
           />
           <Route exact path='/api/events/:id/edit' component={(props) => (

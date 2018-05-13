@@ -31,7 +31,8 @@ export default class EventForm extends Component {
 		});
 	}
 	render() {
-		console.log(this.state.event)
+		console.log(this.state.event);
+		console.log(this.props.user);
 		const { event, text, id, img_url} = this.state.event
 		return (
 			<div>
