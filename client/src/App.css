@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+.map {
+  height: 50px;
+  /* width: 600px; */
+  margin-left: -80vw;
+  margin-right: 8vw;
+  padding: 20px;
+}
 h2 {
   color: #45a247;
 }
@@ -21,7 +28,7 @@ img {
 }
 
 ul {
-  padding: 0; 
+  padding: 0;
 }
 
 p {

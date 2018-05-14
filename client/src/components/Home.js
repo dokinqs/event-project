@@ -21,7 +21,7 @@ export default class Home extends Component {
     //if the user is logged in the events that the user created will be displayed on the home page
 
     return (
-      <div>
+      <div className="homepage">
         <h2>Welcome {greeting}!</h2>
         {loggedIn}
         <Link to='/api/events'>
