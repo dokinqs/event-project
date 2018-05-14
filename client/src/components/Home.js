@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
 export default class Home extends Component {
   render() {
     const greeting = this.props.name ? (this.props.name.username) : "Guest"
@@ -13,6 +14,7 @@ export default class Home extends Component {
         <ul>
           <li>here comes a list of personal events</li>
         </ul>
+
 
       </div>
     )
