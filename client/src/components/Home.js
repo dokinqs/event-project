@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-class Home extends Component {
-
+export default class Home extends Component {
   render() {
-    console.log(this.props.events);
     return (
       <div>
-      <h2>Welcome Home!</h2>
-      <img src='https://files.slack.com/files-pri/T0351JZQ0-FAMD93QBG/logomakr_9ufv8t.png'/>
-    </div>
+        <h2>Welcome!</h2>
+        <Link to='/api/events'>
+          <h3>Let's Hackup!</h3>
+        </Link>
+        <img src="https://securecdn.pymnts.com/wp-content/uploads/2017/08/russsiahacker-1.jpg" alt="fellow hacker says hi" />
+      </div>
     )
   }
 }
-
-export default Home;

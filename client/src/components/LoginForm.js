@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-class LoginForm extends Component {
+export default class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectHome: false,
       username: '',
       email: '',
-      pw_digest: ''
+      pw_digest: '',
+      redirectHome: false
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // when you start to type in the input box it will change the state
+  // will change the state as you type in the input box
   handleInputChange(e) {
     const { name, value } = e.target;
     this.setState({
@@ -36,41 +36,47 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="login form" method="post">
-        {this.state.redirectHome && <Redirect to='/' />}
-
-        <label htmlFor="username">Username
+      <div className="form"><h2>Member Login</h2>
+        <form onSubmit={this.handleSubmit} className="login" method="post">
+          {this.state.redirectHome && <Redirect to='/' />}
+          <label htmlFor="username">
+            <input 
+              placeholder="Username"
+              type="text" 
+              onChange={this.handleInputChange}
+              value={this.state.username}
+              name="username" 
+            />
+          </label>
+          <br />
+          <label htmlFor="Email">
+            <input 
+              placeholder="Email"
+              type="text" 
+              onChange={this.handleInputChange}
+              value={this.state.email}
+              name="email" 
+            />
+          </label>
+          <br />
+          <label htmlFor="password">
+            <input 
+              placeholder="Password"
+              type="password" 
+              onChange={this.handleInputChange}
+              value={this.state.pw_digest}
+              name="pw_digest" 
+            />
+          </label>
+          <br />
           <input 
-            type="text" 
-            onChange={this.handleInputChange}
-            value={this.state.username}
-            name="username" 
+            className="button"
+            type="submit" 
+            value="Log in" 
+            onSubmit={this.handleSubmit}
           />
-        </label>
-        <label htmlFor="Email">Email
-          <input 
-            type="text" 
-            onChange={this.handleInputChange}
-            value={this.state.email}
-            name="email" 
-          />
-        </label>
-        <label htmlFor="password">Password
-          <input 
-            type="password" 
-            onChange={this.handleInputChange}
-            value={this.state.pw_digest}
-            name="pw_digest" 
-          />
-        </label>
-        <input 
-          type="submit" 
-          value="Login" 
-          onSubmit={this.handleSubmit}
-        />
-      </form>
+        </form>
+      </div>
     )
   }
 }
-
-export default LoginForm;

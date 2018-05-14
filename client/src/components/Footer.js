@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
-class Footer extends Component {
+export default class Footer extends Component {
   render() {
     return (
-      <div className='nav-bar'>
-        <h2>MADE BY H@ckUp FOR H@ckUp</h2>
+      <div className='nav-bar bottom'>
+        <span className="blue">hacked together by </span>
+        <span>Chance, Janell, Felipe, and Karen</span>
       </div>
     )
   }
 }
-
-export default Footer;

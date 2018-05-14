@@ -2,30 +2,109 @@
   text-align: center;
 }
 
+h2 {
+  color: #45a247;
+}
+
+a {
+  text-decoration: none;
+  color: #1C6B9E;
+  font-weight: bold;
+}
+
+img .logo {
+  width: 380px;
+}
+
+img {
+  max-width: 60vw;
+}
+
+ul {
+  padding: 0; 
+}
+
+p {
+  color: #000;
+}
+
+input {
+  margin: 10px;
+}
+
+.middle {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 .nav-li {
   list-style-type: none;
   text-decoration: none;
   display: inline;
-  padding: 30px;
+  padding: 2vw;
+  margin: 1px;
   background-color: white;
-  color: blue;
   text-emphasis: center;
+  font-size: 1.5vw;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #45a247;
+}
+
+.nav-li:hover {
+  background-color: #123fa1;
+}
+
+.blue {
+  color: #1C6B9E;
 }
 
 .nav-bar {
-  background-color: lightblue;
-  padding: 25px;
+  background-color: black;
+  color: #45a247;
+  padding: 20px 0;
+  margin: 0;
 }
 
 .nav-bar img {
-  /* width: 80px; */
-  height: 50px;
+  height: 80px;
   float: left;
 }
+
+.nav-li .right {
+  float: right;
+}
+
 .event-list {
   display: inline-block;
-  border: solid 2px #000;
-  width: 80%;
+  border: dashed 1px #000;
+  width: 80vw;
   text-align: center;
-  padding-bottom: 20px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.event-list:hover {
+  background-color: #d1dff8;
+}
+
+form .button {
+  cursor: pointer;
+  color: white;
+  background: #5ab14e;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.form {
+  border: 1px solid #1C6B9E;
+  border-radius: 20px;
+  margin: 120px 20vw;
+  padding: 30px;
+  background: #123fa1;
 }

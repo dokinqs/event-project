@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-class Events extends Component {
-
+export default class Events extends Component {
   render() {
     console.log(this.props.events);
     return (
+      // clicking inside an event goes to its single page
       <div>
-      <h2>This Is Events!</h2>
-      {this.props.events.map(event => (
-        <Link to ={`events/${event.id}`}><div key={event.id} className='event-list'>
-          {event.id}
-          <p>{event.event}</p>
-          <p>{event.text}</p>
-          <p>{event.img_url}</p>
-
-        </div>
-        </Link>
-        //make the whole section of each event clickable
-      ))}
-    </div>
+        <h2>EVENTS LIST</h2>
+        {this.props.events.map(event => (
+          <Link to ={`events/${event.id}`}>
+            <div key={event.id} className='event-list'>
+              Event # {event.id}
+              <p>{event.event}</p>
+              <p>{event.text}</p>
+              <img src={event.img_url} alt="img url" />
+            </div>
+          </Link>
+        ))}
+      </div>
     )
   }
 }
-
-export default Events;

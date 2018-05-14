@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import jwt from 'jwt-js';
-import Events from './components/Events';
-import Navbar from './components/Header';
-import Home from './components/Home';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import EditEvent from './components/EditEvent';
+import Home from './components/Home';
+import Events from './components/Events';
 import Event from './components/Event';
-import LoginForm from './components/LoginForm';
+import EditEvent from './components/EditEvent';
 import CreateEvent from './components/CreateEvent';
-import EventForm from './components/EventForm';
+// import EventForm from './components/EventForm';
+import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       events: [],
       currentUser: null
@@ -33,7 +32,6 @@ class App extends Component {
         if (!resp.ok) {
           throw Error('oops: ', resp.message);
         }
-
         return resp.json();
       }).then(data => this.setState ({
           events: data.data
@@ -41,11 +39,11 @@ class App extends Component {
   }
 
   findEvent(id) {
-    // id = parseInt(id, 10)
-    // console.log(this.state.events[0].id)
+    // id = parseInt(id, 10);
+    // console.log(this.state.events[0]);
     const event = (this.state.events).filter(t => (t.id === parseInt(id, 10)));
-    console.log(event)
-    return event[0]
+    console.log(event);
+    return event[0];
   }
 
   createEvent(event) {
@@ -148,7 +146,6 @@ class App extends Component {
       })
   }
 
-
   registerRequest(creds) {
     console.log('trying to register with creds', creds);
     fetch('/api/auth/register', {
@@ -200,7 +197,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state.events)
+    // console.log(this.state.events);
     return (
       <div className="App">
         <Navbar />
@@ -208,15 +205,14 @@ class App extends Component {
           <Route exact path='/api/events/new'
           component={() => (
             <CreateEvent
-              onSubmit={this.createEvent.bind(this)} />
-            )}
-          />
+              onSubmit={this.createEvent.bind(this)} 
+            />
+          )} />
           <Route exact path='/api/events/:id/edit' component={(props) => (
             <EditEvent
               {...props}
               event={this.findEvent(props.match.params.id)}
               onSubmit={this.updateEvent.bind(this)}
-
             />
           )} />
           <Route path='/api/events/:id' component={(props) => (
@@ -226,8 +222,7 @@ class App extends Component {
               del={() => this.handleDelete(props.match.params.id)}
               // onSubmit={this.updateEvent.bind(this)}
             />
-          )}
-        />
+          )} />
           <Route exact path='/api/events' component={(props) => (
               <Events
                 {...props}
@@ -237,23 +232,19 @@ class App extends Component {
           <Route exact path='/api/auth/login' component={(props) => (
             <LoginForm
               {...props}
-                handleLogin={this.handleLogin}
+              handleLogin={this.handleLogin}
             />
           )} />
           <Route exact path='/api/auth/register' component={(props) => (
             <RegisterForm
               {...props}
-                handleRegister={this.handleRegister}
+              handleRegister={this.handleRegister}
             />
           )} />
-        <Route path='/' component={Home}/>
-
+        <Route path='/' component={Home} />
         </Switch>
         <Footer />
-
       </div>
     );
   }
 }
-
-export default App;

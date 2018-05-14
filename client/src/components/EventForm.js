@@ -35,40 +35,35 @@ export default class EventForm extends Component {
 		const { event, text, id, img_url} = this.state.event
 		return (
 			<div>
-
 				<form onSubmit={this.handleSubmit.bind(this)} className={id ? 'edit' : 'create'}>
 					{this.state.redirectHome && <Redirect to='/api/events' />}
-
-					<label>
-						<h3>Text</h3>
-						<textarea rows='8' colts='80'
-							name='text'
-							value={text}
-							onChange={this.handleChange.bind(this)}
-						/>
-					</label><br/>
 					<label>
 						<h3>Event</h3>
-						<textarea rows='8' colts ='80'
+						<textarea rows='3' cols ='70'
 							name='event'
 							value={event}
 							onChange={this.handleChange.bind(this)}
 						/>
 					</label><br/>
 					<label>
-						<h3>image URL</h3>
-						<textarea rows='8' colts ='80'
+						<h3>Text</h3>
+						<textarea rows='6' cols='70'
+							name='text'
+							value={text}
+							onChange={this.handleChange.bind(this)}
+						/>
+					</label><br/>
+					<label>
+						<h3>Image URL</h3>
+						<textarea rows='2' cols ='70'
 							name='img_url'
 							value={img_url}
 							onChange={this.handleChange.bind(this)}
 						/>
 					</label><br/>
-
-					<button type='submit'>CHANGE</button>
+					<button class="button" type='submit'>Submit</button>
 				</form>
-
 			</div>
 		)
 	}
-
 }
