@@ -14,7 +14,7 @@ export default class RegisterForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // will change the state as you type in the input box 
+  // will change the state as you type in the input box
   handleInputChange(e) {
     const { name, value } = e.target;
     this.setState({
@@ -38,41 +38,41 @@ export default class RegisterForm extends Component {
     return (
       <div className="form"><h2>Sign Up</h2>
         <form onSubmit={this.handleSubmit} className="login" method="post">
-          {this.state.redirectLogin && <Redirect to='/api/auth/login' />}
+          {this.state.redirectLogin && <Redirect to='/' />}
           <label htmlFor="username">
-            <input 
+            <input
               placeholder="Create a Username"
-              type="text" 
+              type="text"
               onChange={this.handleInputChange}
               value={this.state.username}
-              name="username" 
+              name="username"
             />
           </label>
           <br />
           <label htmlFor="email">
-            <input 
+            <input
               placeholder="Email Address"
-              type="text" 
+              type="text"
               onChange={this.handleInputChange}
               value={this.state.email}
-              name="email" 
+              name="email"
             />
           </label>
           <br />
           <label htmlFor="password">
-            <input 
+            <input
               placeholder="Create a password"
-              type="password" 
+              type="password"
               onChange={this.handleInputChange}
               value={this.state.pw_digest}
-              name="pw_digest" 
+              name="pw_digest"
             />
           </label>
           <br />
-          <input 
+          <input
             className="button"
-            type="submit" 
-            value="Register" 
+            type="submit"
+            value="Register"
             onSubmit={this.handleSubmit}
           />
         </form>
