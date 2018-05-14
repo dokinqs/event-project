@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
   render() {
-    const filter = this.props.events.filter(event => event.user_id === this.props.name.id);
+    const filter = this.props.name ? (this.props.events.filter(event => event.user_id === this.props.name.id)) : ['No events'];
 
     const greeting = this.props.name ? (this.props.name.username) : "Guest"
     //personalized greeting to each username
     const loggedIn = (greeting === "Guest") ? (<Link to='api/auth/register'><h2>create an account</h2></Link>)
     : (
       <div className='home-container'>
-        <h2>Welcome {greeting}!</h2>
         <div className='home-left'>
           <p>My Events:</p>
           {filter.map(event => (
@@ -39,7 +38,7 @@ export default class Home extends Component {
 
     return (
       <div>
-
+        <h2>Welcome {greeting}!</h2>
         {loggedIn}
         <Link to='/api/events'>
           <h3>Let's Hackup!</h3>

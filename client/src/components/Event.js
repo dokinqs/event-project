@@ -23,7 +23,6 @@ editEvent(id) {
     return (
       <div>
         <div className='form text-event'>
-          <h3>Edit Event: {id}</h3>
           <img src={img_url} className='img-event'/>
           <p className="text-event">{event}</p>
           <p className="text-event">{text}</p>
