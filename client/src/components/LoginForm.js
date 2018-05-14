@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Route, Redirect, Link } from 'react-router-dom';
 
 class LoginForm extends Component {
+
   constructor(props) {
     super(props);
+
     this.state = {
       redirectHome: false,
       username: '',
@@ -41,8 +43,13 @@ class LoginForm extends Component {
 
   render() {
     const selected = this.props.currentUser;
-    const details = selected ? (<Link to='/'><button onClick={this.handleLogout}>Log Out</button></Link>) :
-    (<form onSubmit={this.handleSubmit} className="login form" method="post">
+    const details = selected ?
+    (<Link to='/'><button onClick={this.handleLogout}>Log Out</button></Link>) :
+    (<form
+      onSubmit={this.handleSubmit}
+      className="login form"
+      method="post">
+
       {this.state.redirectHome && <Redirect to='/'/>}
 
       <label htmlFor="username">Username
@@ -73,7 +80,7 @@ class LoginForm extends Component {
         type="submit"
         value="Login"
         onSubmit={this.handleSubmit} />
-        
+
     </form>)
 
     return (

@@ -14,9 +14,9 @@ import EventForm from './components/EventForm';
 import RegisterForm from './components/RegisterForm';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
-
     this.state = {
       events: [],
       currentUser: null
@@ -123,7 +123,6 @@ class App extends Component {
   }
 
   loginRequest(creds) {
-    console.log('trying to log in with creds', creds);
     fetch('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify(creds),
@@ -162,7 +161,6 @@ class App extends Component {
         this.setState({
           currentUser: jwt.decodeToken(respBody.token).payload
         })
-        console.log('registered with creds!', creds);
       })
   }
 
@@ -174,22 +172,13 @@ class App extends Component {
     this.registerRequest(creds);
   }
 
-  // handleSubmit(event) {
-  //   this.createEvent(event);
-  // }
-
   handleDelete(id) {
     this.deleteEvent(id);
     window.location.reload();
-    // this.props.history.push(`/api/events`);
   }
 
-  // handleEdit(event, id) {
-  //   this.updateEvent(event, id);
-  // }
   handleLogout() {
     this.setState({currentUser: null});
-    console.log("handle logout connection works");
   }
 
   componentDidMount() {
@@ -202,7 +191,9 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+
         <Switch>
+
           <Route exact path='/api/events/new'
           component={() => (
             <CreateEvent
@@ -245,11 +236,11 @@ class App extends Component {
                 handleRegister={this.handleRegister}
             /> )} />
 
-        <Route path='/' component={(props) => (
-          <Home
-            {...props}
-            name={this.state.currentUser}
-          /> )} />
+          <Route path='/' component={(props) => (
+            <Home
+              {...props}
+              name={this.state.currentUser}
+            /> )} />
 
         </Switch>
         <Footer />
