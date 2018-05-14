@@ -20,7 +20,7 @@ class Mapbox extends Component {
 
 	    const map = new mapboxgl.Map({
 	      container: this.mapContainer,
-	      style: 'mapbox://styles/mapbox/streets-v9',
+	      style: 'mapbox://styles/mapbox/streets-v9',  ///here is where you plug the url that you optain from the website
 	      center: [lng, lat],
 	      zoom
 	    });
