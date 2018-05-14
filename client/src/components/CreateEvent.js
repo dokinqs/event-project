@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import EventForm from './EventForm';
 
 export default class CreateEvent extends Component {
@@ -10,7 +11,7 @@ export default class CreateEvent extends Component {
 					id='create'
 					func={this.props.onSubmit}
 					user={this.props.user} />
-			) : (<h1>Please log in!</h1>);
+			) : (<Link to='/api/auth/login'><h1>Please log in!</h1></Link>);
 			//if the user is logged in the form shows up when when clicking on "new" to create an event othersise it asks the user to log in
 
 		return(
@@ -20,4 +21,3 @@ export default class CreateEvent extends Component {
 		)
 	}
 }
-	

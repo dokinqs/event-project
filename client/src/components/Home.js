@@ -5,7 +5,7 @@ export default class Home extends Component {
   render() {
     const greeting = this.props.name ? (this.props.name.username) : "Guest"
     //personalized greeting to each username
-    const loggedIn = (greeting === "Guest") ? (<h2>create an account</h2>)
+    const loggedIn = (greeting === "Guest") ? (<Link to='api/auth/register'><h2>create an account</h2></Link>)
     : (
       <div>
         <h3>My Events</h3>

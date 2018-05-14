@@ -83,7 +83,8 @@ export default class LoginForm extends Component {
         type="submit"
         value="Login"
         onSubmit={this.handleSubmit} />
-
+        <br />
+        <Link to='/api/auth/register'><p>Not a user yet? Please register.</p></Link>
     </form>)
 
     return (
