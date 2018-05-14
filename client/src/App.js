@@ -190,7 +190,7 @@ export default class App extends Component {
     console.log(this.state.currentUser)
     return (
       <div className="App">
-        <Navbar />
+        <Navbar user={this.state.currentUser}/>
 
         <Switch>
 

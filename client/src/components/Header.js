@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
   render() {
+    const loggedIn = this.props.user;
+    const logConfirm = loggedIn ? "Log Out" : "Login"
     return (
       <nav className="nav-bar">
         <ul>
@@ -22,7 +24,7 @@ export default class Navbar extends Component {
           </Link>
 
           <Link to='/api/auth/login'>
-            <li className="nav-li">Login/Log Out</li>
+            <li className="nav-li">{logConfirm}</li>
           </Link>
 
           <Link to='/api/auth/register'>
