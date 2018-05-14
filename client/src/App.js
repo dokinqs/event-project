@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import jwt from 'jwt-js'; //jason web token
+import jwt from 'jwt-js';
 import Events from './components/Events';
 import Navbar from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
-import EditEvent from './components/EditEvent';
+import Home from './components/Home';
+import Events from './components/Events';
 import Event from './components/Event';
-import LoginForm from './components/LoginForm';
+import EditEvent from './components/EditEvent';
 import CreateEvent from './components/CreateEvent';
-import EventForm from './components/EventForm';
+// import EventForm from './components/EventForm';
+import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 
-class App extends Component {
+export default class App extends Component {
 
   constructor(props) {
     super(props);
@@ -241,12 +243,9 @@ class App extends Component {
               {...props}
               name={this.state.currentUser}
             /> )} />
-
         </Switch>
         <Footer />
       </div>
     );
   }
 }
-
-export default App;

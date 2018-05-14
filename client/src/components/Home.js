@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-class Home extends Component {
-
+export default class Home extends Component {
   render() {
     const greeting = this.props.name ? (this.props.name.username) : "Guest"
     //personalized greeting to each username
-    const logedIn = (greeting === "Guest") ? (<h2>create an account</h2>)
+    const loggedIn = (greeting === "Guest") ? (<h2>create an account</h2>)
     : (
       <div>
         <h3>My Events</h3>
@@ -21,14 +20,13 @@ class Home extends Component {
 
     return (
       <div>
-
         <h2>Welcome {greeting}!</h2>
-        {logedIn}
-        <img src='https://files.slack.com/files-pri/T0351JZQ0-FAMD93QBG/logomakr_9ufv8t.png'/>
-
+        {loggedIn}
+        <Link to='/api/events'>
+          <h3>Let's Hackup!</h3>
+        </Link>
+        <img src="https://securecdn.pymnts.com/wp-content/uploads/2017/08/russsiahacker-1.jpg" alt="fellow hacker says hi" />
       </div>
     )
   }
 }
-
-export default Home;

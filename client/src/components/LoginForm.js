@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Link } from 'react-router-dom';
 
-class LoginForm extends Component {
+export default class LoginForm extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
-      redirectHome: false,
       username: '',
       email: '',
-      pw_digest: ''
+      pw_digest: '',
+      redirectHome: false
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  // when you start to type in the input box it will change the state
+  // will change the state as you type in the input box
   handleInputChange(e) {
     const { name, value } = e.target;
     this.setState({
@@ -90,5 +89,3 @@ class LoginForm extends Component {
     )
   }
 }
-
-export default LoginForm;

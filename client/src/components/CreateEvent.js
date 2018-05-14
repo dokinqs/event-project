@@ -20,3 +20,4 @@ export default class CreateEvent extends Component {
 		)
 	}
 }
+	
