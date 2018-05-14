@@ -27,7 +27,7 @@ export default class RegisterForm extends Component {
     e.preventDefault();
     this.props.handleRegister(this.state);
     this.setState({
-      redirectLogin: true,
+      redirectHome: true,
       username: '',
       email: '',
       pw_digest: ''
@@ -38,7 +38,7 @@ export default class RegisterForm extends Component {
     return (
       <div className="form"><h2>Sign Up</h2>
         <form onSubmit={this.handleSubmit} className="login" method="post">
-          {this.state.redirectLogin && <Redirect to='/api/auth/login' />}
+          {this.state.redirectHome && <Redirect to='/' />}
           <label htmlFor="username">
             <input 
               placeholder="Create a Username"

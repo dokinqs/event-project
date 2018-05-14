@@ -66,7 +66,7 @@ export default class App extends Component {
     const options = {
       method: 'PUT',
       headers: {
-        'Accept': 'application/jason',
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(event)
