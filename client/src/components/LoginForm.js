@@ -43,38 +43,41 @@ export default class LoginForm extends Component {
   render() {
     const selected = this.props.currentUser;
     const details = selected ?
-    (<Link to='/'><button onClick={this.handleLogout}>Log Out</button></Link>) :
+    (<Link to='/'><button className="button" onClick={this.handleLogout}>Log Out</button></Link>) :
     (<form
       onSubmit={this.handleSubmit}
       className="login form"
       method="post">
 
       {this.state.redirectHome && <Redirect to='/'/>}
-
-      <label htmlFor="username">Username
+      <h2>Log In</h2>
+      <label htmlFor="username">
         <input
+          placeholder="Username"
           type="text"
           onChange={this.handleInputChange}
           value={this.state.username}
           name="username" />
       </label>
-
-      <label htmlFor="Email">Email
+      <br />
+      <label htmlFor="Email">
         <input
+          placeholder="Email"
           type="text"
           onChange={this.handleInputChange}
           value={this.state.email}
           name="email" />
       </label>
-
-      <label htmlFor="password">Password
+      <br />
+      <label htmlFor="password">
         <input
+          placeholder="Password"
           type="password"
           onChange={this.handleInputChange}
           value={this.state.pw_digest}
           name="pw_digest" />
       </label>
-
+      <br />
       <input
         type="submit"
         value="Login"
@@ -83,7 +86,7 @@ export default class LoginForm extends Component {
     </form>)
 
     return (
-      <div>
+      <div className="form">
         {details}
       </div>
     )

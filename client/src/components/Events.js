@@ -16,7 +16,7 @@ export default class Events extends Component {
                   {event.id}
                   <p>{event.event}</p>
                   <p>{event.text}</p>
-                  <p>{event.img_url}</p>
+                  <img src={event.img_url} />
                 </div>
               </Link>
 

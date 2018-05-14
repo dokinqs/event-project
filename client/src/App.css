@@ -91,14 +91,13 @@ input {
   background-color: #d1dff8;
 }
 
-form .button {
+.button {
   cursor: pointer;
   color: white;
   background: #5ab14e;
   border: none;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px;
 }
 
 .form {

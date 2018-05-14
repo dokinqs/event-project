@@ -6,8 +6,6 @@ import Events from './components/Events';
 import Navbar from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
-import Home from './components/Home';
-import Events from './components/Events';
 import Event from './components/Event';
 import EditEvent from './components/EditEvent';
 import CreateEvent from './components/CreateEvent';
