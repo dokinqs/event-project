@@ -4,13 +4,12 @@ import { Route, Link } from 'react-router-dom';
 export default class Events extends Component {
   render() {
     return (
-
       <div>
         <h2>This Is Events!</h2>
+        
         {this.props.events.map(event => (
 
           <div className='event-list'>
-
               <Link to ={`events/${event.id}`}>
                 <div key={event.id} >
                   {event.id}
@@ -19,8 +18,6 @@ export default class Events extends Component {
                   <img src={event.img_url} />
                 </div>
               </Link>
-
-            <button>like</button>
 
           </div> // make the whole section of each event clickable
       ))}
