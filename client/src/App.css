@@ -21,7 +21,7 @@ img {
 }
 
 ul {
-  padding: 0; 
+  padding: 0;
 }
 
 p {
@@ -106,4 +106,30 @@ input {
   margin: 120px 20vw;
   padding: 30px;
   background: #123fa1;
+}
+.img-event {
+  max-width: 80%;
+}
+.text-event {
+  color: #fff;
+}
+.home-container {
+  width: 95%;
+  text-align: center;
+}
+.home-left {
+  display: inline-block;
+  width: 45%;
+  border: solid 1px black;
+  margin-right: 1px;
+}
+.home-right {
+  display: inline-block;
+  width: 45%;
+  border: solid 1px black;
+  margin-left: 1px;
+}
+.my-event {
+  background-color: #123fa1;
+  color: #45a247;
 }

@@ -240,6 +240,7 @@ export default class App extends Component {
             <Home
               {...props}
               name={this.state.currentUser}
+              events={this.state.events}
             /> )} />
         </Switch>
         <Footer />

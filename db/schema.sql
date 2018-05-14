@@ -19,7 +19,8 @@ CREATE TABLE events (
   user_id INTEGER REFERENCES users (id) ON DELETE CASCADE
 
 );
--- CREATE TABLE likes (
---   events_id INTEGER REFERENCES events (id) DROP CASCADE
---   user_id INTEGER REFERENCES user (id) DROP CASCADE
--- );
+CREATE TABLE likes (
+  id SERIAL PRIMARY KEY,
+  events_id INTEGER REFERENCES events (id),
+  liker_id INTEGER REFERENCES users (id)
+);

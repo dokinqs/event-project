@@ -22,13 +22,18 @@ editEvent(id) {
     const { event, text, id, img_url } = this.state.event
     return (
       <div>
-        <h3>Edit Event: {id}</h3>
-        <p>{event}</p>
-        <p>{text}</p>
-        <p>{img_url}</p>
+        <div className='form text-event'>
+          <h3>Edit Event: {id}</h3>
+          <img src={img_url} className='img-event'/>
+          <p className="text-event">{event}</p>
+          <p className="text-event">{text}</p>
+        </div>
+        <hr />
 
-        <Link to={`/api/events/${id}/edit`}><button>Edit Event</button></Link>
-        <Link to="/api/events"> <button onClick={this.props.del} > DELETE</button> </Link>
+        <Link to={`/api/events/${id}/edit`}><button className='button'>Edit Event</button></Link>
+        <Link to="/api/events"> <button onClick={this.props.del} className='button'> DELETE</button> </Link>
+        <hr />
+        <br />
       </div>
     )
   }
