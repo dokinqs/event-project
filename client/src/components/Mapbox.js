@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import mapboxgl from "mapbox-gl";
+// import Geocoder from '@mapbox/react-geocoder';
 
 mapboxgl.accessToken = "pk.eyJ1IjoiaGFja3VwIiwiYSI6ImNqaDI3cGtwdTBiemIyd2xpODE5NTB0YWQifQ.9Z2ES7XsDMO-_5GwV43qgw";
 
@@ -22,7 +23,7 @@ class Mapbox extends Component {
 	      container: this.mapContainer,
 	      style: 'mapbox://styles/mapbox/streets-v9',  ///here is where you plug the url that you optain from the website
 	      center: [lng, lat],
-	      zoom
+	      zoom: 10
 	    });
 
 	    map.on('move', () => {
@@ -34,6 +35,8 @@ class Mapbox extends Component {
 	        zoom: map.getZoom().toFixed(2)
 	      });
 	    });
+
+
 	  }
 
 	  render() {
@@ -44,6 +47,7 @@ class Mapbox extends Component {
 	          <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
 	        </div>
 	        <div ref={el => this.mapContainer = el} className="map"></div>
+
 	      </div>
 	    );
 	  }
@@ -51,3 +55,5 @@ class Mapbox extends Component {
 	// the code above was taken from the following repository https://github.com/mapbox/mapbox-react-examples
 
 export default Mapbox;
+
+// https://api.mapbox.com/geocoding/v5/mapbox.places/-73.9896352%2C40.7397171.json?access_token=pk.eyJ1IjoiaGFja3VwIiwiYSI6ImNqaDI3cGtwdTBiemIyd2xpODE5NTB0YWQifQ.9Z2ES7XsDMO-_5GwV43qgw

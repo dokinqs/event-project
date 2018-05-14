@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mapbox/react-geocoder": "^2.5.0",
     "dotenv": "^5.0.1",
     "jwt-js": "^0.5.0",
     "proxy": "^0.2.4",
