@@ -43,7 +43,7 @@ export default class LoginForm extends Component {
   render() {
     const selected = this.props.currentUser;
     const details = selected ?
-    (<Link to='/'><button className="button" onClick={this.handleLogout}>Log Out</button></Link>) :
+    (<div className="form"><Link to='/'><button className="button" onClick={this.handleLogout}>Log Out</button></Link></div>) :
     (<form
       onSubmit={this.handleSubmit}
       className="login form"
@@ -79,6 +79,7 @@ export default class LoginForm extends Component {
       </label>
       <br />
       <input
+        className="button"
         type="submit"
         value="Login"
         onSubmit={this.handleSubmit} />
@@ -86,7 +87,7 @@ export default class LoginForm extends Component {
     </form>)
 
     return (
-      <div className="form">
+      <div>
         {details}
       </div>
     )
