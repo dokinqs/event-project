@@ -4,6 +4,7 @@ function getAll(req, res, next) {
   like.getAll()
     .then(data => {
       res.locals.likes = data;
+      console.log("test in terminal: ", res.locals.likes)
       next();
     }).catch(next);
 }
@@ -13,6 +14,7 @@ function getOne(req, res, next) {
   like.getOne(req.params.id)
   .then(data => {
     res.locals.likes = data;
+
     next();
   }).catch(next);
 }
@@ -22,7 +24,7 @@ function create(req, res, next) {
   like.create(req.body)
   .then(data => {
     res.locals.likes = data;
-    console.log(res.locals.likes);
+    console.log('WHAHAHAHAHAHAHA!!!!')
     next();
   }).catch(next);
 }
@@ -32,14 +34,6 @@ function destroy(req, res, next) {
     .then(data => {
     // res.locals.likes = data;
     // console.log(res.locals.likes);
-    next();
-  }).catch(next);
-}
-
-function update(req, res, next) {
-  like.update(req.body)
-    .then(data => {
-    res.locals.likes = data;
     next();
   }).catch(next);
 }

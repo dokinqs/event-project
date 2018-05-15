@@ -19,15 +19,18 @@ export default class App extends Component {
     super(props);
     this.state = {
       events: [],
-      currentUser: null
+      currentUser: null,
+      likes: []
     }
     this.findEvent = this.findEvent.bind(this);
+    this.findLikes = this.findLikes.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleLike = this.handleLike.bind(this);
   }
-
+//fetch calls for events
   fetchEvents() {
     fetch('/api/events')
       .then(resp => {
@@ -41,8 +44,8 @@ export default class App extends Component {
   }
 
   findEvent(id) {
-    const event = (this.state.events).filter(t => (t.id === parseInt(id, 10)));
-    return event[0]
+    const event = this.state.events.filter(t => (t.id === parseInt(id, 10)));
+    return event[0];
   }
 
   createEvent(event) {
@@ -94,7 +97,57 @@ export default class App extends Component {
       })
     })
   }
+  //fetch calls for likes
+  fetchLikes() {
+    fetch('/api/like')
+      .then(resp => {
+        if (!resp.ok) {
+          throw Error('oops: ', resp.message);
+        }
+        return resp.json();
+      }).then(data => this.setState ({
+          likes: data.data
+      })).catch(err => console.log(`error: ${err}`))
+  }
 
+  findLikes(id) {
+    const like = this.state.likes.filter(t => (t.events_id === parseInt(id, 10)));
+    return like;
+  }
+  deleteLike(id) {
+    fetch(`/api/like/${id}`, {
+      method: 'DELETE'
+    })
+    .then(resp => {
+      if (!resp.ok) throw new Error(resp.statusMessage);
+      return resp.json();
+    })
+    .then(respBody => {
+      this.setState((prevState, props) => {
+        return {
+          likes: prevState.likes.filter(like => like.id !== id)
+        }
+      })
+    })
+  }
+  createLike(like) {
+    fetch('/api/like/new', {
+      method: 'POST',
+      body: JSON.stringify(like),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(resBody => {
+      console.log('RESPBODY: ', resBody)
+      this.setState((prevState, props) => {
+        return {
+          likes: prevState.likes.concat(resBody.data)
+        }
+      })
+    })
+  }
+  //auth section
   checkToken() {
     const authToken = localStorage.getItem('authToken');
     fetch('/api/auth', {
@@ -180,14 +233,24 @@ export default class App extends Component {
   handleLogout() {
     this.setState({currentUser: null});
   }
+  handleDislike(id) {
+    this.deleteLike(id);
 
+    // console.log('link to app.js HDL works: ', id)
+    // window.location.reload();
+  }
+  handleLike(like) {
+    this.createLike(like);
+    window.location.reload();
+  }
   componentDidMount() {
     this.fetchEvents();
     this.checkToken();
+    this.fetchLikes();
   }
 
   render() {
-    console.log(this.state.currentUser)
+    console.log(this.state.likes)
     return (
       <div className="App">
         <Navbar user={this.state.currentUser}/>
@@ -214,6 +277,10 @@ export default class App extends Component {
               {...props}
               event={this.findEvent(props.match.params.id)}
               del={() => this.handleDelete(props.match.params.id)}
+              likes={this.findLikes(props.match.params.id)}
+              user={this.state.currentUser}
+              handledisLike={(a) => this.handleDislike(a)}
+              handleLike={(a) => this.handleLike(a)}
             /> )} />
 
           <Route exact path='/api/events' component={(props) => (
@@ -241,6 +308,7 @@ export default class App extends Component {
               {...props}
               name={this.state.currentUser}
               events={this.state.events}
+              likes={this.state.likes}
             /> )} />
         </Switch>
         <Footer />

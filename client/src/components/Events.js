@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Events extends Component {
   render() {
     return (
       <div>
         <h2>This Is Events!</h2>
-        
+
         {this.props.events.map(event => (
 
-          <div className='event-list'>
+          <div key={event.id} className='event-list'>
               <Link to ={`events/${event.id}`}>
                 <div key={event.id} >
                   {event.id}
                   <p>{event.event}</p>
                   <p>{event.text}</p>
-                  <img src={event.img_url} />
+                  <img src={event.img_url} alt='no pic'/>
                 </div>
               </Link>
 

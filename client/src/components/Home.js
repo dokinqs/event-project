@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default class Home extends Component {
   render() {
     const filter = this.props.name ? (this.props.events.filter(event => event.user_id === this.props.name.id)) : ['No events'];
-
+    const filterLikes = this.props.name ? (this.props.likes.filter(likes => likes.liker_id === this.props.name.id)) : ['No likes'];
     const greeting = this.props.name ? (this.props.name.username) : "Guest"
     //personalized greeting to each username
     const loggedIn = (greeting === "Guest") ? (<Link to='api/auth/register'><h2>create an account</h2></Link>)
@@ -28,7 +28,18 @@ export default class Home extends Component {
         </div>
         <div className='home-right'>
           <p>I Am Going To:</p>
+          {filterLikes.map(like => (
+            <div className='my-event'>
 
+              <Link to={`api/events/${like.events_id}`}>
+                <div key={like.events_id}>
+                  <p className='my-event'>{like.events_id}</p>
+                </div>
+              </Link>
+
+            </div>
+
+          ))}
 
         </div>
 
