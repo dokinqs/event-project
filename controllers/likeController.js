@@ -4,7 +4,6 @@ function getAll(req, res, next) {
   like.getAll()
     .then(data => {
       res.locals.likes = data;
-      console.log("test in terminal: ", res.locals.likes)
       next();
     }).catch(next);
 }
@@ -24,7 +23,6 @@ function create(req, res, next) {
   like.create(req.body)
   .then(data => {
     res.locals.likes = data;
-    console.log('WHAHAHAHAHAHAHA!!!!')
     next();
   }).catch(next);
 }

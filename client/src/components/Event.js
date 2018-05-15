@@ -19,25 +19,6 @@ export default class Event extends Component {
     this.checkiIfLike = this.checkiIfLike.bind(this);
   }
 
-  // handleLike() {
-  //   // clicked like
-  //   if (!this.state.liked) {
-  //     this.state.likedarray.push(this.state.event.id);
-  //     console.log('likedarray: ', this.state.likedarray);
-  //     console.log('liked: ', !this.state.liked);
-  //   // clicked unlike
-  //   } else {
-  //     let larray = this.state.likedarray;
-  //     let indexxx = larray.indexOf(this.props.events);
-  //     this.state.likedarray.splice(indexxx, 1);
-  //     console.log('likedarray: ', this.state.likedarray);
-  //     console.log('liked: ', !this.state.liked);
-  //   }
-  //   this.setState({
-  //     liked: !this.state.liked,
-  //     likedarray: this.state.likedarray
-  //   });
-  // }
   handleLike() {
     const like = {
       "liker_id": this.props.user.id,
@@ -69,7 +50,7 @@ export default class Event extends Component {
   render() {
 
     // console.log('render curr user :', this.props.user)
-    const { event, text, id, img_url } = this.state.event;
+    const { event, text, id, img_url, location } = this.state.event;
 
     // const likeIdVarCheck = !likeIdVar ? '' : likeIdVar[0].id
     // this.setState({
@@ -84,9 +65,14 @@ export default class Event extends Component {
       <div>
         <div className='form text-event'>
           <img src={img_url} className='img-event'/>
+          <h3>Name:</h3>
           <p className="text-event">{event}</p>
+          <h3>Description:</h3>
           <p className="text-event">{text}</p>
+          <h3>Location:</h3>
+          <p className="text-event">{location}</p>
         </div>
+        <Mapbox />
         <hr />
 
         <button className="button" onClick={(likedByMe === "Dislike") ? this.handleDislike : this.handleLike}>{likedByMe}({this.state.likes.length})</button>
@@ -108,10 +94,6 @@ export default class Event extends Component {
     return (
       <div>
       {loaded}
-
-        <Link to={`/api/events/${id}/edit`}><button>Edit Event</button></Link>
-        <Link to="/api/events"> <button onClick={this.props.del} > DELETE</button> </Link>
-        <Mapbox />
 
       </div>
     )

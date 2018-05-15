@@ -1,14 +1,62 @@
 .App {
   text-align: center;
 }
+/* input {
+  position: absolute;
+  background-color: yellow;
+} */
+
+.geocoder-icon, .geocoder-icon-close {
+  display:none;
+}
 
 .map {
-  height: 150px;
-  width: 300px;
-  margin-right: 8vw;
+  /* box-sizing: border-box; */
+  height: 500px;
+  min-width: 300px;
+  margin-left: -1000px;
   padding: 20px;
   margin-bottom: 40px;
+  /* margin-right: 140px; */
+  margin-right: 10vw;
+  text-align: center;
+  /* margin: 0 auto; */
 }
+
+@media screen (max-width: 1200px) {
+  .map {
+    margin-left: 50px;
+    margin-right: 0;
+  }
+}
+/* #geocoder-container > div {
+    min-width:50%;
+    margin-left:25%;
+} */
+
+/* .mapboxgl-canvas-container {
+  box-sizing: border-box;
+  text-align: center;
+} */
+
+.mapboxgl-missing-css {
+  display: none;
+}
+.mapboxgl-canvas {
+  width: 600px;
+}
+
+.suggestions li {
+  display: none;
+}
+
+.geocoder-icon, .geocoder-icon-close button {
+  display: none;
+}
+
+/* .mapboxgl-control-container {
+  display: none;
+} */
 
 h2 {
   color: #45a247;
@@ -142,4 +190,3 @@ input {
   background-color: #123fa1;
   color: #45a247;
 }
-

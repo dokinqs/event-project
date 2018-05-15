@@ -17,9 +17,8 @@ CREATE TABLE events (
   event VARCHAR(255),
   text TEXT NOT NULL,
   img_url TEXT,
-  address TEXT NOT NULL,
-  user_id INTEGER REFERENCES users (id) ON DELETE CASCADE
-
+  user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
+  location TEXT NOT NULL
 );
 CREATE TABLE likes (
   id SERIAL PRIMARY KEY,

@@ -19,8 +19,8 @@ function create(events) {
   //if the users are not logged in they cannot create
 
   return db.one(`
-    INSERT INTO events (event, text, img_url, user_id)
-    VALUES ($/event/, $/text/, $/img_url/, $/user_id/)
+    INSERT INTO events (event, text, img_url, user_id, location)
+    VALUES ($/event/, $/text/, $/img_url/, $/user_id/, $/location/)
     RETURNING *
     `, events);
 }
@@ -34,7 +34,7 @@ function destroy(id) {
 function update(events) {
     return db.one(`
     UPDATE events
-    SET event = $/event/, text = $/text/, img_url = $/img_url/
+    SET event = $/event/, text = $/text/, img_url = $/img_url/, location = $/location/ 
     WHERE id = $/id/
     RETURNING *
     `, events);
