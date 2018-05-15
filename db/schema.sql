@@ -16,6 +16,7 @@ CREATE TABLE events (
   event VARCHAR(255),
   text TEXT NOT NULL,
   img_url TEXT,
+  address TEXT NOT NULL,
   user_id INTEGER REFERENCES users (id) ON DELETE CASCADE
 
 );

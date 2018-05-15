@@ -242,7 +242,6 @@ export default class App extends Component {
               {...props}
               name={this.state.currentUser}
             /> )} />
-            <Mapbox />
         </Switch>
         <Footer />
       </div>

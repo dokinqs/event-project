@@ -58,13 +58,10 @@ Initial Start
 ## Time Management
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| CRUD(Express/REACT) | H | 48hrs | N/A | Express(4hrs) |
-| Delete Functionality | H | 1hrs| 2hrs | 2hrs |
-| Create Functionality | H | 2hrs | 4hrs | 4hrs |
-| Update Functionality | H | 2hrs | 4hrs | 4hrs |
+| CRUD(Express/REACT) | H | 48hrs | N/A | 14hrs |
 | Auth | H | 10hrs| 3 | N/A |
 | Login/register/logout | H | 13hrs | 4.5hrs |  |
-| API | H | 10hrs| N/A | N/A |
+| API | H | 10hrs| 12 | N/A |
 | Styling | L | 5hrs| N/A | N/A |
 | Setup Server | H | 2hrs| 1.5hrs | 1.5hrs |
 | event "likes" Functionality | m | |  |  |

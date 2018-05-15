@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
@@ -18,7 +17,6 @@ class Mapbox extends Component {
 
 	  componentDidMount() {
 	    const { lng, lat, zoom } = this.state;
-
 	    const map = new mapboxgl.Map({
 	      container: this.mapContainer,
 	      style: 'mapbox://styles/mapbox/streets-v9',  ///here is where you plug the url that you optain from the website
@@ -26,12 +24,15 @@ class Mapbox extends Component {
 	      zoom: 10
 	    });
 
+			// accesses the token above
 			const geocoder = new MapboxGeocoder({
 				accessToken: mapboxgl.accessToken
 			});
 
 			map.addControl(geocoder);
 
+			// After the map style has loaded on the page, add a source layer
+			// and default styling for a single point.
 			map.on('load', function() {
 				map.addSource('single-point', {
 					"type": "geojson",
@@ -40,6 +41,7 @@ class Mapbox extends Component {
 						"feature": []
 					}
 				});
+
 				map.addLayer({
 					"id": "point",
 					"source": "single-point",
@@ -49,6 +51,10 @@ class Mapbox extends Component {
 						"circle-color": "#007cbf"
 					}
 				});
+
+				// Listen for the `geocoder.input` event that is triggered when
+				// a user makes a selection and add a symbol that matches the
+				// result
 				geocoder.on('result', function(ev) {
 					map.getSource('single-point').setData(ev.result.geometry);
 				});
@@ -59,16 +65,12 @@ class Mapbox extends Component {
 	    const { lng, lat, zoom } = this.state;
 	    return (
 	      <div>
-	        <div>
-	          <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
-	        </div>
 	        <div ref={el => this.mapContainer = el} className="map"></div>
-
 	      </div>
 	    );
 	  }
 	}
-	// the code above was taken from the following repository https://github.com/mapbox/mapbox-react-examples
+	// the code above was taken and modified from the following repository: https://github.com/mapbox/mapbox-react-examples as well as mapbox.com documentation
 
 export default Mapbox;
 
