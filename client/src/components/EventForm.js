@@ -10,7 +10,7 @@ export default class EventForm extends Component {
 				event: '',
 				text: '',
 				img_url: '',
-				address: '',
+				location: '',
 				user_id: this.props.user.id
 			}, props.event)
 		}
@@ -37,7 +37,7 @@ export default class EventForm extends Component {
 	render() {
 		console.log(this.state.event);
 		console.log(this.props.user);
-		const { event, text, address, id, img_url} = this.state.event
+		const { event, text, location, id, img_url} = this.state.event
 		return (
 			<div>
 
@@ -61,10 +61,10 @@ export default class EventForm extends Component {
 					</label><br/>
 
 					<label>
-						<h3>Address</h3>
+						<h3>Location</h3>
 						<textarea rows='2' cols='70'
-							name='address'
-							value={address}
+							name='location'
+							value={location}
 							onChange={this.handleChange.bind(this)} />
 					</label><br/>
 
