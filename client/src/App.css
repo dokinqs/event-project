@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.map {
+  height: 150px;
+  width: 300px;
+  margin-right: 8vw;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
 h2 {
   color: #45a247;
 }
@@ -107,6 +115,7 @@ input {
   padding: 30px;
   background: #123fa1;
 }
+
 .img-event {
   max-width: 80%;
 }
@@ -133,3 +142,4 @@ input {
   background-color: #123fa1;
   color: #45a247;
 }
+

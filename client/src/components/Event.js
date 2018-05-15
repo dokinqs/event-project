@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Mapbox from './Mapbox';
 
 export default class Event extends Component {
   constructor(props) {
@@ -107,6 +108,11 @@ export default class Event extends Component {
     return (
       <div>
       {loaded}
+
+        <Link to={`/api/events/${id}/edit`}><button>Edit Event</button></Link>
+        <Link to="/api/events"> <button onClick={this.props.del} > DELETE</button> </Link>
+        <Mapbox />
+
       </div>
     )
   }

@@ -10,6 +10,7 @@ export default class EventForm extends Component {
 				event: '',
 				text: '',
 				img_url: '',
+				address: '',
 				user_id: this.props.user.id
 			}, props.event)
 		}
@@ -36,10 +37,10 @@ export default class EventForm extends Component {
 	render() {
 		console.log(this.state.event);
 		console.log(this.props.user);
-		const { event, text, id, img_url} = this.state.event
+		const { event, text, address, id, img_url} = this.state.event
 		return (
 			<div>
-				
+
 				<h1>{id ? 'Edit' : 'Create'} your event {this.props.user.username}!</h1>
 				<form onSubmit={this.handleSubmit.bind(this)} className={id ? 'edit' : 'create'}>
 					{this.state.redirectHome && <Redirect to='/api/events' />}
@@ -48,8 +49,7 @@ export default class EventForm extends Component {
 						<textarea rows='3' cols ='70'
 							name='event'
 							value={event}
-							onChange={this.handleChange.bind(this)}
-						/>
+							onChange={this.handleChange.bind(this)} />
 					</label><br/>
 
 					<label>
@@ -57,8 +57,15 @@ export default class EventForm extends Component {
 						<textarea rows='6' cols='70'
 							name='text'
 							value={text}
-							onChange={this.handleChange.bind(this)}
-						/>
+							onChange={this.handleChange.bind(this)} />
+					</label><br/>
+
+					<label>
+						<h3>Address</h3>
+						<textarea rows='2' cols='70'
+							name='address'
+							value={address}
+							onChange={this.handleChange.bind(this)} />
 					</label><br/>
 
 					<label>
@@ -76,7 +83,3 @@ export default class EventForm extends Component {
 		)
 	}
 }
-
-
-
-// onClick={this.setState({event.user_id: (this.props.user.id)})}

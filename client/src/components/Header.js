@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default class Navbar extends Component {
   render() {
     const loggedIn = this.props.user;
-    const logConfirm = loggedIn ? "Log Out" : "Login"
+    const logConfirm = loggedIn ? "Logout" : "Login"
     return (
       <nav className="nav-bar">
         <ul>

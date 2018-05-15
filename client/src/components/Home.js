@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
 export default class Home extends Component {
   render() {
     const filter = this.props.name ? (this.props.events.filter(event => event.user_id === this.props.name.id)) : ['No events'];
@@ -43,12 +44,13 @@ export default class Home extends Component {
 
         </div>
 
+
       </div>
     )
     //if the user is logged in the events that the user created will be displayed on the home page
 
     return (
-      <div>
+      <div className="homepage">
         <h2>Welcome {greeting}!</h2>
         {loggedIn}
         <Link to='/api/events'>
