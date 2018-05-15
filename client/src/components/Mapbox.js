@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import mapboxgl from "mapbox-gl";
-// import Geocoder from '@mapbox/react-geocoder';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 mapboxgl.accessToken = "pk.eyJ1IjoiaGFja3VwIiwiYSI6ImNqaDI3cGtwdTBiemIyd2xpODE5NTB0YWQifQ.9Z2ES7XsDMO-_5GwV43qgw";
 
@@ -26,18 +26,34 @@ class Mapbox extends Component {
 	      zoom: 10
 	    });
 
-	    map.on('move', () => {
-	      const { lng, lat } = map.getCenter();
+			const geocoder = new MapboxGeocoder({
+				accessToken: mapboxgl.accessToken
+			});
 
-	      this.setState({
-	        lng: lng.toFixed(4),
-	        lat: lat.toFixed(4),
-	        zoom: map.getZoom().toFixed(2)
-	      });
-	    });
+			map.addControl(geocoder);
 
-
-	  }
+			map.on('load', function() {
+				map.addSource('single-point', {
+					"type": "geojson",
+					"data": {
+						"type": "FeatureCollection",
+						"feature": []
+					}
+				});
+				map.addLayer({
+					"id": "point",
+					"source": "single-point",
+					"type": "circle",
+					"paint": {
+						"circle-radius": 10,
+						"circle-color": "#007cbf"
+					}
+				});
+				geocoder.on('result', function(ev) {
+					map.getSource('single-point').setData(ev.result.geometry);
+				});
+			});
+		}
 
 	  render() {
 	    const { lng, lat, zoom } = this.state;
