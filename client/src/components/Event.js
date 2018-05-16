@@ -52,10 +52,6 @@ export default class Event extends Component {
     // console.log('render curr user :', this.props.user)
     const { event, text, id, img_url, location } = this.state.event;
 
-    // const likeIdVarCheck = !likeIdVar ? '' : likeIdVar[0].id
-    // this.setState({
-    //   likeId : likeIdVarCheck
-    // });
 
     const likedByMe = (this.state.likeId > 0) ? "Dislike" : "like";
     console.log()

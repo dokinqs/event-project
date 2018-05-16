@@ -16,7 +16,7 @@ Initial Start
 - The user will be able to READ all the events they have chosen
 - CREATE and event
 - UPDATE and event they will possibly be going to or an event they created
-- DELETE an event from there favorites list along with interests.
+- DELETE an event from their favorites list along with interests.
 
 ## Technologies
 - Express
@@ -71,3 +71,50 @@ Initial Start
 
 ## Obstacles
 - Issues customizing the features of mapbox.com api  to make it fit our project goals
+
+## code-snippet
+```
+const filter = this.props.name ? (this.props.events.filter(event => event.user_id === this.props.name.id)) : ['No events'];
+const filterLikes = this.props.name ? (this.props.likes.filter(likes => likes.liker_id === this.props.name.id)) : ['No likes'];
+const greeting = this.props.name ? (this.props.name.username) : "Guest"
+//personalized greeting to each username
+const loggedIn = (greeting === "Guest") ? (<Link to='api/auth/register'><h2>create an account</h2></Link>)
+: (
+	<div className='home-container'>
+		<div className='home-left'>
+			<p>My Events:</p>
+			{filter.map(event => (
+				<div className='my-event'>
+
+					<Link to={`api/events/${event.id}`}>
+						<div key={event.id}>
+							<p className='my-event'>{event.event}</p>
+						</div>
+					</Link>
+
+				</div>
+
+			))}
+
+		</div>
+		<div className='home-right'>
+			<p>I Am Going To:</p>
+			{filterLikes.map(like => (
+				<div className='my-event'>
+
+					<Link to={`api/events/${like.events_id}`}>
+						<div key={like.events_id}>
+							<p className='my-event'>{like.events_id}</p>
+						</div>
+					</Link>
+
+				</div>
+
+			))}
+
+		</div>
+
+
+	</div>
+)
+```
