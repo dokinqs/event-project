@@ -46,18 +46,11 @@ export default class Event extends Component {
   }
 
   render() {
-    // console.log('render curr user :', this.props.user)
     const { event, text, id, img_url, location } = this.state.event;
 
-    // const likeIdVarCheck = !likeIdVar ? '' : likeIdVar[0].id
-    // this.setState({
-    //   likeId : likeIdVarCheck
-    // });
 
-    const likedByMe = (this.state.likeId > 0) ? "Unlike" : "Like";
-    console.log()
-    // console.log('liked by me variable = ', this.state.likeId)
-    // const likeHandle = (likedByMe === "Unlike") ? this.handleDislike() : this.handleLike();
+    const likedByMe = (this.state.likeId > 0) ? "Dislike" : "like";
+
     const loaded = this.state.likes ? (
       <div className="event-form-div">
         <div className='form text-event'>

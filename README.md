@@ -3,8 +3,7 @@
 ## Summary
 Create a meetup inspired application for people in the tech community to meet, based on the
 technologies that the user likes. The user can like, edit, delete and create events.
-We will be using the meetup.com api to show additional results than the ones created by our
-users.
+We used the mapbox.com API to show a map used for the location of the events.
 
 ## User Story
 Initial Start
@@ -12,45 +11,47 @@ Initial Start
 
 - A login and register will be to the top right corner. If they have not registered they will click on the register link and be guided to a register form. If otherwise they will be guided to a login form.
 
-- The User will have a page for themselves, showing the events they will be attending and/or favorited. There will be a settings page for the city and zipcode information pertaining to the events in the area and also hashtags of what they are interested in.
+- The User will have a page for themselves, showing the events they will be attending and/or "liked".
 
-- They will be able to READ all the events they have chosen
+- The user will be able to READ all the events they have chosen
 - CREATE and event
 - UPDATE and event they will possibly be going to or an event they created
-- DELETE an event from there favorites list along with interests.
+- DELETE an event from their favorites list along with interests.
 
 ## Technologies
 - Express
 - PostGresSQL
-- Models & Views
+- Models & Controllers
 - CRUD
 - REACT
-- Meetup.com API
+- Mapbox API
 
 ## Installatin Instructions
 - npm install on the root folder
 - yarn install inside the client folder
+- psql -f db/schema.psql
+- psql -f db/seed.sql
 
 ## MVP
 - API
 - CRUD
 - Auth
+- Likes
 
 ## Post MVP
 - Styling
 - Search bar
 - Comments
-- Google (Places or Maps) API
+- Show the map with a marker pointing to the location of all the events
 
 ## Workflow
 - setup - all together
-- pst setup - pair programming, different pairs everyday, and driver navigator switch every 20mins.
+- pst setup - pair programming, different pairs everyday and driver navigator switching periodically
 - One pair will be doing Front-end the second pair will be doing Back-end
 - Style guide: airBnb
 
 ## Wireframe
 <img src="wireframe.jpg" />
-
 
 ## ERD
 <img src="ERD_wireframe.jpg"/>
@@ -59,15 +60,51 @@ Initial Start
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | CRUD(Express/REACT) | H | 48hrs | N/A | 14hrs |
-| Auth | H | 10hrs| 3 | N/A |
-| Login/register/logout | H | 13hrs | 4.5hrs |  |
-| API | H | 10hrs| 12 | N/A |
-| Styling | L | 5hrs| N/A | N/A |
+| Auth | H | 10hrs| 3 | 12hrs |
+| Login/register/logout | H | 13hrs | 4.5hrs | 14hrs |
+| API | H | 10hrs| 12 | 18hrs |
+| Styling | L | 5hrs|  | 4hrs |
 | Setup Server | H | 2hrs| 1.5hrs | 1.5hrs |
-| event "likes" Functionality | m | |  |  |
+| event "likes" Functionality | m | |  | 10hrs |
 |  |  | |  |  |
-|  |  | |  |  |
-| Total |  | 75hrs | N/A | N/A |
+| Total |  | 75hrs |  | 73.5 |
 
 ## Obstacles
-- Delete functionality: When we added the delete button  the EditEvent page was
+- Issues customizing the features of mapbox.com api  to make it fit our project goals
+
+## code-snippet
+```
+const filter = this.props.name ? (this.props.events.filter(event => event.user_id === this.props.name.id)) : ['No events'];
+const filterLikes = this.props.name ? (this.props.likes.filter(likes => likes.liker_id === this.props.name.id)) : ['No likes'];
+const greeting = this.props.name ? (this.props.name.username) : "Guest"
+//personalized greeting to each username
+const loggedIn = (greeting === "Guest") ? (<Link to='api/auth/register'><h2>create an account</h2></Link>)
+: (
+	<div className='home-container'>
+		<div className='home-left'>
+			<p>My Events:</p>
+			{filter.map(event => (
+				<div className='my-event'>
+					<Link to={`api/events/${event.id}`}>
+						<div key={event.id}>
+							<p className='my-event'>{event.event}</p>
+						</div>
+					</Link>
+				</div>
+			))}
+		</div>
+		<div className='home-right'>
+			<p>I Am Going To:</p>
+			{filterLikes.map(like => (
+				<div className='my-event'>
+					<Link to={`api/events/${like.events_id}`}>
+						<div key={like.events_id}>
+							<p className='my-event'>{like.events_id}</p>
+						</div>
+					</Link>
+				</div>
+			))}
+		</div>
+	</div>
+)
+```
