@@ -1,6 +1,6 @@
-\c events_db
+-- \c events_db
 
-DELETE FROM events;
+-- DELETE FROM events;
 
 -- INSERT INTO events (event, text)
 -- VALUES

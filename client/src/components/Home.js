@@ -12,7 +12,7 @@ export default class Home extends Component {
     : (
       <div className='home-container'>
         <div className='home-left'>
-          <p>My Events:</p>
+          <p><b>My Events:</b></p>
           {filter.map(event => (
             <div className='my-event'>
 
@@ -28,7 +28,7 @@ export default class Home extends Component {
 
         </div>
         <div className='home-right'>
-          <p>I Am Going To:</p>
+          <p><b>I Am Going To:</b></p>
           {filterLikes.map(like => (
             <div className='my-event'>
 

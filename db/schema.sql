@@ -1,5 +1,5 @@
 -- CREATE DATABASE events_db;
-\c events_db
+-- \c events_db
 
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS users;

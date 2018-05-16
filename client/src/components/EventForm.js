@@ -39,9 +39,9 @@ export default class EventForm extends Component {
 		console.log(this.props.user);
 		const { event, text, location, id, img_url} = this.state.event
 		return (
-			<div>
+			<div className="event-form-div">
 
-				<h1>{id ? 'Edit' : 'Create'} your event {this.props.user.username}!</h1>
+				<h1>{id ? 'Edit this ' : 'Create an '}  event, {this.props.user.username}!</h1>
 				<form onSubmit={this.handleSubmit.bind(this)} className={id ? 'edit' : 'create'}>
 					{this.state.redirectHome && <Redirect to='/api/events' />}
 					<label>
@@ -76,7 +76,7 @@ export default class EventForm extends Component {
 							onChange={this.handleChange.bind(this)} />
 					</label><br/>
 
-					<button type='submit'>{id ? 'edit' : 'create'}</button>
+					<button className='button' type='submit'>{id ? 'Edit' : 'Create'}</button>
 
 				</form>
 			</div>

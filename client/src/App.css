@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 .App {
   text-align: center;
+  font-family: 'Raleway';
+  background: #d8e9d5;
 }
 /* input {
   position: absolute;
@@ -7,7 +11,7 @@
 } */
 
 .geocoder-icon, .geocoder-icon-close {
-  display:none;
+  display: none;
 }
 
 .map {
@@ -18,7 +22,7 @@
   padding: 20px;
   margin-bottom: 40px;
   /* margin-right: 140px; */
-  margin-right: 10vw;
+  margin-right: 8vw;
   text-align: center;
   /* margin: 0 auto; */
 }
@@ -60,6 +64,7 @@
 
 h2 {
   color: #45a247;
+  font-size: 40px;
 }
 
 a {
@@ -86,6 +91,8 @@ p {
 
 input {
   margin: 10px;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .middle {
@@ -134,9 +141,14 @@ input {
   float: right;
 }
 
+.events-list-div {
+  background: #d8e9d5;
+}
+
 .event-list {
+  background: white;
   display: inline-block;
-  border: dashed 1px #000;
+  border: solid 1px #000;
   width: 80vw;
   text-align: center;
   padding: 10px;
@@ -144,7 +156,7 @@ input {
 }
 
 .event-list:hover {
-  background-color: #d1dff8;
+  background: linear-gradient(to right, #45a247, #fff, #45a247);
 }
 
 .button {
@@ -154,14 +166,42 @@ input {
   border: none;
   border-radius: 5px;
   padding: 10px;
+  margin: 20px;
+  font-size: 30px;
+  height: 70px;
+  width: 200px;
+}
+
+.button:hover, .button:focus{
+  animation: pulse 0.5s;
+  box-shadow: 0 0 0 24px rgba(255, 255, 255, 0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 #82dd5e; }
+}
+
+.button:active {
+  background: black;
+}
+
+.event-form-div {
+  background: #1C6B9E;
+  padding: 10px;
+}
+
+.event-form-div .form {
+  margin: 0 20vw;
+  background: #1C6B9E;
 }
 
 .form {
   border: 1px solid #1C6B9E;
   border-radius: 20px;
-  margin: 120px 20vw;
+  margin: 50px 20vw;
   padding: 30px;
-  background: #123fa1;
+  background: black;
+  /* background: linear-gradient(to bottom, #4b6cb7, #182848); */
 }
 
 .img-event {
@@ -175,18 +215,22 @@ input {
   text-align: center;
 }
 .home-left {
+  background: black;
   display: inline-block;
   width: 45%;
   border: solid 1px black;
   margin-right: 1px;
 }
 .home-right {
+  background: black;
   display: inline-block;
   width: 45%;
   border: solid 1px black;
   margin-left: 1px;
 }
+.home-left p, .home-right p {
+  color: white;
+}
 .my-event {
-  background-color: #123fa1;
-  color: #45a247;
+  background-color: #45a247;
 }

@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 export default class Events extends Component {
   render() {
     return (
-      <div>
-        <h2>This Is Events!</h2>
+      <div className="events-list-div">
+        <br />
+        <h2>Events List</h2>
 
         {this.props.events.map(event => (
 

@@ -57,12 +57,12 @@ export default class Event extends Component {
     //   likeId : likeIdVarCheck
     // });
 
-    const likedByMe = (this.state.likeId > 0) ? "Dislike" : "like";
+    const likedByMe = (this.state.likeId > 0) ? "Unlike" : "Like";
     console.log()
     // console.log('liked by me variable = ', this.state.likeId)
-    // const likeHandle = (likedByMe === "Dislike") ? this.handleDislike() : this.handleLike();
+    // const likeHandle = (likedByMe === "Unlike") ? this.handleDislike() : this.handleLike();
     const loaded = this.state.likes ? (
-      <div>
+      <div className="event-form-div">
         <div className='form text-event'>
           <img src={img_url} className='img-event'/>
           <h3>Name:</h3>
@@ -75,16 +75,14 @@ export default class Event extends Component {
         <Mapbox />
         <hr />
 
-        <button className="button" onClick={(likedByMe === "Dislike") ? this.handleDislike : this.handleLike}>{likedByMe}({this.state.likes.length})</button>
+        <button className="button" onClick={(likedByMe === "Unlike") ? this.handleDislike : this.handleLike}>{likedByMe} ({this.state.likes.length}♡)</button>
 
         <Link to={`/api/events/${id}/edit`}>
-        <button className='button'>Edit Event</button>
+        <button className='button'>Edit</button>
         </Link>
         <Link to="/api/events">
         <button className='button' onClick={this.props.del} > DELETE</button>
         </Link>
-        <hr />
-        <br />
       </div>
     ) : (
       <div>
