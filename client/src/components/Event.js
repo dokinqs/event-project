@@ -42,13 +42,10 @@ export default class Event extends Component {
   }
 
   componentDidMount() {
-
     this.checkiIfLike();
-
   }
 
   render() {
-
     // console.log('render curr user :', this.props.user)
     const { event, text, id, img_url, location } = this.state.event;
 
@@ -91,12 +88,8 @@ export default class Event extends Component {
     );
     return (
       <div>
-      {loaded}
-
+        {loaded}
       </div>
     )
   }
 }
-
-
-// onClick={this.handleLike}
