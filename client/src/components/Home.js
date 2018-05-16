@@ -54,9 +54,11 @@ export default class Home extends Component {
         <h2>Welcome {greeting}!</h2>
         {loggedIn}
         <Link to='/api/events'>
-          <h3>Let's Hackup!</h3>
+          <h3 class="message">Let's Hackup!</h3>
         </Link>
+        <Link to='/api/events'>
         <img src="https://securecdn.pymnts.com/wp-content/uploads/2017/08/russsiahacker-1.jpg" alt="fellow hacker says hi" />
+        </Link>
       </div>
     )
   }

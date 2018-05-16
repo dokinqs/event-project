@@ -211,7 +211,6 @@ input {
   color: #fff;
 }
 .home-container {
-  width: 95%;
   text-align: center;
 }
 .home-left {
@@ -219,18 +218,40 @@ input {
   display: inline-block;
   width: 45%;
   border: solid 1px black;
-  margin-right: 1px;
+  margin-right: 15px;
 }
 .home-right {
   background: black;
   display: inline-block;
   width: 45%;
   border: solid 1px black;
-  margin-left: 1px;
+  /* margin-left: 1px; */
 }
 .home-left p, .home-right p {
   color: white;
 }
 .my-event {
   background-color: #45a247;
+}
+
+.message:hover {
+  background: white;
+  transition: all .5s cubic-bezier(0, .4, .8, 1);
+}
+
+.nav-bar img:hover, 
+.nav-bar img:focus, 
+.homepage img:hover, 
+.homepage img:focus {
+  box-shadow: 0 5px 5px -2px black;
+  transform: translateY(-20px);
+}
+
+.login-prompt {
+  margin: 270px;
+}
+
+.logout-page {
+  height: 100%;
+  margin: 200px;
 }
