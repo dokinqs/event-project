@@ -21,7 +21,7 @@ Initial Start
 ## Technologies
 - Express
 - PostGresSQL
-- Models & Views
+- Models & Controllers
 - CRUD
 - REACT
 - Mapbox API
@@ -29,19 +29,19 @@ Initial Start
 ## Installatin Instructions
 - npm install on the root folder
 - yarn install inside the client folder
-- psql -f db/shcema.psql
+- psql -f db/schema.psql
 - psql -f db/seed.sql
 
 ## MVP
 - API
 - CRUD
 - Auth
+- Likes
 
 ## Post MVP
 - Styling
 - Search bar
 - Comments
-- Google (Places or Maps) API
 - Show the map with a marker pointing to the location of all the events
 
 ## Workflow
@@ -85,36 +85,26 @@ const loggedIn = (greeting === "Guest") ? (<Link to='api/auth/register'><h2>crea
 			<p>My Events:</p>
 			{filter.map(event => (
 				<div className='my-event'>
-
 					<Link to={`api/events/${event.id}`}>
 						<div key={event.id}>
 							<p className='my-event'>{event.event}</p>
 						</div>
 					</Link>
-
 				</div>
-
 			))}
-
 		</div>
 		<div className='home-right'>
 			<p>I Am Going To:</p>
 			{filterLikes.map(like => (
 				<div className='my-event'>
-
 					<Link to={`api/events/${like.events_id}`}>
 						<div key={like.events_id}>
 							<p className='my-event'>{like.events_id}</p>
 						</div>
 					</Link>
-
 				</div>
-
 			))}
-
 		</div>
-
-
 	</div>
 )
 ```

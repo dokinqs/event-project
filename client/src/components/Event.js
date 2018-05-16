@@ -49,14 +49,11 @@ export default class Event extends Component {
 
   render() {
 
-    // console.log('render curr user :', this.props.user)
     const { event, text, id, img_url, location } = this.state.event;
 
 
     const likedByMe = (this.state.likeId > 0) ? "Dislike" : "like";
-    console.log()
-    // console.log('liked by me variable = ', this.state.likeId)
-    // const likeHandle = (likedByMe === "Dislike") ? this.handleDislike() : this.handleLike();
+
     const loaded = this.state.likes ? (
       <div>
         <div className='form text-event'>
