@@ -1,5 +1,8 @@
 # H@ckUp
 
+## Heroku Deployed Site
+https://tranquil-mesa-50145.herokuapp.com/
+
 ## Summary
 Create a meetup inspired application for people in the tech community to meet, based on the
 technologies that the user likes. The user can like, edit, delete and create events.
